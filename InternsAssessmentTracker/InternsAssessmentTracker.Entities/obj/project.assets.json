@@ -3462,7 +3462,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "System.Linq >= 4.1.0"
     ]
   },
   "packageFolders": {
@@ -3515,6 +3516,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "System.Linq": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           }
         },
         "imports": [

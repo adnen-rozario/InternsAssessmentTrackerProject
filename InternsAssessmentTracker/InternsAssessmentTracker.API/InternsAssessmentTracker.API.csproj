@@ -8,10 +8,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\InternsAssessmentTracker.Entities\InternsAssessmentTracker.Entities.csproj" />
+    <ProjectReference Include="..\InternsAssessmentTracker.Services\InternsAssessmentTracker.Services.csproj" />
   </ItemGroup>
 
 </Project>

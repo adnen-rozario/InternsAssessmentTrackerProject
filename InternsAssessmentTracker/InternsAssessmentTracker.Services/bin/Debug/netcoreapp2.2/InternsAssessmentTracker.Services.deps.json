@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v2.2": {
       "InternsAssessmentTracker.Services/1.0.0": {
         "dependencies": {
-          "InternsAssessmentTracker.Entities": "1.0.0"
+          "InternsAssessmentTracker.Entities": "1.0.0",
+          "System.Linq": "4.1.0"
         },
         "runtime": {
           "InternsAssessmentTracker.Services.dll": {}
@@ -502,7 +503,8 @@
       },
       "InternsAssessmentTracker.Entities/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
+          "System.Linq": "4.1.0"
         },
         "runtime": {
           "InternsAssessmentTracker.Entities.dll": {}

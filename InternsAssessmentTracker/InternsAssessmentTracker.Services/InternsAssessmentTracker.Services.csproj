@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Linq" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\InternsAssessmentTracker.Entities\InternsAssessmentTracker.Entities.csproj" />
   </ItemGroup>
 

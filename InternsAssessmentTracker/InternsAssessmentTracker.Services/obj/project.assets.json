@@ -911,7 +911,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
+          "System.Linq": "4.1.0"
         },
         "compile": {
           "bin/placeholder/InternsAssessmentTracker.Entities.dll": {}
@@ -3480,7 +3481,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "InternsAssessmentTracker.Entities >= 1.0.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "System.Linq >= 4.1.0"
     ]
   },
   "packageFolders": {
@@ -3533,6 +3535,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "System.Linq": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           }
         },
         "imports": [
