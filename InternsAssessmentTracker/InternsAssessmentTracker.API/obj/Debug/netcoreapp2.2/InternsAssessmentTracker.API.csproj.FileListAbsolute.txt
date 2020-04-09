@@ -1,0 +1,17 @@
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.API.deps.json
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.API.runtimeconfig.json
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.API.runtimeconfig.dev.json
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.API.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.API.pdb
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.csprojAssemblyReference.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.csproj.CoreCompileInputs.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.RazorAssemblyInfo.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.RazorAssemblyInfo.cs
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.AssemblyInfoInputs.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.AssemblyInfo.cs
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.RazorTargetAssemblyInfo.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.pdb
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.API.csproj.CopyComplete
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Entities.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Entities.pdb
