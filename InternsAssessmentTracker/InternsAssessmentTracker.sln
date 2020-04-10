@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternsAssessmentTracker.API", "InternsAssessmentTracker.API\InternsAssessmentTracker.API.csproj", "{7DBD24F8-40DF-426A-BE80-D3BBF740951C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternsAssessmentTracker.API", "InternsAssessmentTracker.API\InternsAssessmentTracker.API.csproj", "{7DBD24F8-40DF-426A-BE80-D3BBF740951C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{206B8979-DA0C-43A2-8285-AD8AB1D7568F} = {206B8979-DA0C-43A2-8285-AD8AB1D7568F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternsAssessmentTracker.Services", "InternsAssessmentTracker.Services\InternsAssessmentTracker.Services.csproj", "{206B8979-DA0C-43A2-8285-AD8AB1D7568F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternsAssessmentTracker.Services", "InternsAssessmentTracker.Services\InternsAssessmentTracker.Services.csproj", "{206B8979-DA0C-43A2-8285-AD8AB1D7568F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternsAssessmentTracker.Entities", "InternsAssessmentTracker.Entities\InternsAssessmentTracker.Entities.csproj", "{A2D1D828-3821-44B1-A9D5-F871955DBBE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternsAssessmentTracker.Entities", "InternsAssessmentTracker.Entities\InternsAssessmentTracker.Entities.csproj", "{A2D1D828-3821-44B1-A9D5-F871955DBBE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternsAssessmentTracker.Models", "InternsAssessmentTracker.Models\InternsAssessmentTracker.Models.csproj", "{87E5B597-B26A-429C-A6AD-6E9C8AF29D08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{A2D1D828-3821-44B1-A9D5-F871955DBBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2D1D828-3821-44B1-A9D5-F871955DBBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2D1D828-3821-44B1-A9D5-F871955DBBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E5B597-B26A-429C-A6AD-6E9C8AF29D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E5B597-B26A-429C-A6AD-6E9C8AF29D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E5B597-B26A-429C-A6AD-6E9C8AF29D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E5B597-B26A-429C-A6AD-6E9C8AF29D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InternsAssessment.Entities.Entities
@@ -11,8 +12,8 @@ namespace InternsAssessment.Entities.Entities
         public string EmailId { get; set; }
         public string PhoneNo { get; set; }
         public DateTime CreatedDate { get; set; }
-        public ICollection<Intern_Rating> Intern_Rating { get; set; }
-        public ICollection<Project_InternRelation> Project_InternRelation { get; set; }
+        public ICollection<InternRating> InternRating { get; set; }
+        public ICollection<ProjectInternRelation> ProjectInternRelation { get; set; }
 
     }
 }

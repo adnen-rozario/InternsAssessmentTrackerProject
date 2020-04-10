@@ -138,6 +138,58 @@
         }
       }
     },
+    "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\InternsAssessmentTracker.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\InternsAssessmentTracker.Models.csproj",
+        "projectName": "InternsAssessmentTracker.Models",
+        "projectPath": "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\InternsAssessmentTracker.Models.csproj",
+        "packagesPath": "C:\\Users\\Adnen.Rozario\\.nuget\\packages\\",
+        "outputPath": "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Adnen.Rozario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Services\\InternsAssessmentTracker.Services.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -166,6 +218,9 @@
             "projectReferences": {
               "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Entities\\InternsAssessmentTracker.Entities.csproj": {
                 "projectPath": "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Entities\\InternsAssessmentTracker.Entities.csproj"
+              },
+              "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\InternsAssessmentTracker.Models.csproj": {
+                "projectPath": "D:\\InternTrackerAssignment\\InternsAssessmentTracker\\InternsAssessmentTracker.Models\\InternsAssessmentTracker.Models.csproj"
               }
             }
           }

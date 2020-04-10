@@ -17,3 +17,5 @@ D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API
 D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Entities.pdb
 D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Services.dll
 D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Services.pdb
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.pdb

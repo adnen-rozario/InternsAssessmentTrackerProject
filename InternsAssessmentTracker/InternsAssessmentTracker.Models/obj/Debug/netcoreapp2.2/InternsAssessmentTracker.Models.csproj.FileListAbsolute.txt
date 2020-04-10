@@ -1,0 +1,9 @@
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.deps.json
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\bin\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.pdb
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.csproj.CoreCompileInputs.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.AssemblyInfoInputs.cache
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.AssemblyInfo.cs
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.dll
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.pdb
+D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Models\obj\Debug\netcoreapp2.2\InternsAssessmentTracker.Models.csprojAssemblyReference.cache

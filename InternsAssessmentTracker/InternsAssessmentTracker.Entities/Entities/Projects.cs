@@ -8,9 +8,10 @@ namespace InternsAssessment.Entities.Entities
     {
         public int ProjectsId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
-        public ICollection<Project_InternRelation> Project_InternRelation { get; set; }
-        public ICollection<Project_TechnologiesRelation> Project_TechnologiesRelation { get; set; }
+        public ICollection<ProjectInternRelation> ProjectInternRelation { get; set; }
+        public ICollection<ProjectTechnologiesRelation> ProjectTechnologiesRelation { get; set; }
 
     }
 }

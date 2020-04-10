@@ -15,7 +15,8 @@ namespace InternsAssessment.Entities.Repository
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
         void Create(T entity);
         void Update(T entity);
-        void Delete(T entity);
+        void Delete(object id);
+        void Delete(T entity);   
         void Save();
     }
 }

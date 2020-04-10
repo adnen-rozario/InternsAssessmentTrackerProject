@@ -4,10 +4,10 @@ using System.Text;
 
 namespace InternsAssessment.Entities.Entities
 {
-   public class Rating_Master
+   public class RatingMaster
     {
-        public int Rating_MasterId { get; set; }
+        public int RatingMasterId { get; set; }
         public string Rate { get; set; }
-        public ICollection<Intern_Rating> Intern_Rating { get; set; }
+        public ICollection<InternRating> InternRating { get; set; }
     }
 }

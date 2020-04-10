@@ -39,10 +39,23 @@ namespace InternsAssessment.Entities.Repository
             this.RepositoryContext.Set<T>().Update(entity);
         }
 
+        public void Delete(object id)
+        {
+            try
+            {
+                T entity = this.RepositoryContext.Set<T>().Find(id);
+                this.Delete(entity);
+            }
+            catch (System.AggregateException)
+            {
+
+            }
+        }
+
         public void Delete(T entity)
         {
             this.RepositoryContext.Set<T>().Remove(entity);
-        }
+        }        
 
         public void Save()
         {

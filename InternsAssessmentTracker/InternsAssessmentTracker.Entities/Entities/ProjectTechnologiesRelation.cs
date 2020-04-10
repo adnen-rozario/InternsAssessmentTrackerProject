@@ -4,12 +4,12 @@ using System.Text;
 
 namespace InternsAssessment.Entities.Entities
 {
-   public class Project_InternRelation
+    public class ProjectTechnologiesRelation
     {
-        public int Project_InternRelationId { get; set; }
+        public int ProjectTechnologiesRelationId { get; set; }
         public int ProjectsId { get; set; }
         public Projects Projects { get; set; }
-        public int InternsId { get; set; }
-        public Interns Interns { get; set; }
+        public int TechnologiesId { get; set; }
+        public Technologies Technologies { get; set; }
     }
 }

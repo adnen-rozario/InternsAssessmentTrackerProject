@@ -356,9 +356,18 @@
           "InternsAssessmentTracker.Entities.dll": {}
         }
       },
+      "InternsAssessmentTracker.Models/1.0.0": {
+        "runtime": {
+          "InternsAssessmentTracker.Models.dll": {}
+        },
+        "compile": {
+          "InternsAssessmentTracker.Models.dll": {}
+        }
+      },
       "InternsAssessmentTracker.Services/1.0.0": {
         "dependencies": {
           "InternsAssessmentTracker.Entities": "1.0.0",
+          "InternsAssessmentTracker.Models": "1.0.0",
           "System.Linq": "4.3.0"
         },
         "runtime": {
@@ -3697,6 +3706,11 @@
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
     "InternsAssessmentTracker.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InternsAssessmentTracker.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

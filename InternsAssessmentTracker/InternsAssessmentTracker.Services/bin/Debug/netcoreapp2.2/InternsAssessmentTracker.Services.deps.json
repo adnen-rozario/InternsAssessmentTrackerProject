@@ -9,6 +9,7 @@
       "InternsAssessmentTracker.Services/1.0.0": {
         "dependencies": {
           "InternsAssessmentTracker.Entities": "1.0.0",
+          "InternsAssessmentTracker.Models": "1.0.0",
           "System.Linq": "4.1.0"
         },
         "runtime": {
@@ -509,6 +510,11 @@
         "runtime": {
           "InternsAssessmentTracker.Entities.dll": {}
         }
+      },
+      "InternsAssessmentTracker.Models/1.0.0": {
+        "runtime": {
+          "InternsAssessmentTracker.Models.dll": {}
+        }
       }
     }
   },
@@ -890,6 +896,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "InternsAssessmentTracker.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InternsAssessmentTracker.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4735,11 +4735,22 @@
           "bin/placeholder/InternsAssessmentTracker.Entities.dll": {}
         }
       },
+      "InternsAssessmentTracker.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/InternsAssessmentTracker.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InternsAssessmentTracker.Models.dll": {}
+        }
+      },
       "InternsAssessmentTracker.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "InternsAssessmentTracker.Entities": "1.0.0",
+          "InternsAssessmentTracker.Models": "1.0.0",
           "System.Linq": "4.1.0"
         },
         "compile": {
@@ -12967,6 +12978,11 @@
       "type": "project",
       "path": "../InternsAssessmentTracker.Entities/InternsAssessmentTracker.Entities.csproj",
       "msbuildProject": "../InternsAssessmentTracker.Entities/InternsAssessmentTracker.Entities.csproj"
+    },
+    "InternsAssessmentTracker.Models/1.0.0": {
+      "type": "project",
+      "path": "../InternsAssessmentTracker.Models/InternsAssessmentTracker.Models.csproj",
+      "msbuildProject": "../InternsAssessmentTracker.Models/InternsAssessmentTracker.Models.csproj"
     },
     "InternsAssessmentTracker.Services/1.0.0": {
       "type": "project",

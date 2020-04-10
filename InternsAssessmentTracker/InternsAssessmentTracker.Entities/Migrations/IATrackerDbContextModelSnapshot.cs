@@ -19,9 +19,9 @@ namespace InternsAssessmentTracker.Entities.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Intern_Rating", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.InternRating", b =>
                 {
-                    b.Property<int>("Intern_RatingId")
+                    b.Property<int>("InternRatingId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -29,19 +29,19 @@ namespace InternsAssessmentTracker.Entities.Migrations
 
                     b.Property<int>("InternsId");
 
-                    b.Property<int>("Rating_MasterId");
+                    b.Property<int>("RatingMasterId");
 
                     b.Property<int>("TechnologiesId");
 
-                    b.HasKey("Intern_RatingId");
+                    b.HasKey("InternRatingId");
 
                     b.HasIndex("InternsId");
 
-                    b.HasIndex("Rating_MasterId");
+                    b.HasIndex("RatingMasterId");
 
                     b.HasIndex("TechnologiesId");
 
-                    b.ToTable("Intern_Rating");
+                    b.ToTable("InternRating");
                 });
 
             modelBuilder.Entity("InternsAssessment.Entities.Entities.Interns", b =>
@@ -63,9 +63,9 @@ namespace InternsAssessmentTracker.Entities.Migrations
                     b.ToTable("Interns");
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Project_InternRelation", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.ProjectInternRelation", b =>
                 {
-                    b.Property<int>("Project_InternRelationId")
+                    b.Property<int>("ProjectInternRelationId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -73,18 +73,18 @@ namespace InternsAssessmentTracker.Entities.Migrations
 
                     b.Property<int>("ProjectsId");
 
-                    b.HasKey("Project_InternRelationId");
+                    b.HasKey("ProjectInternRelationId");
 
                     b.HasIndex("InternsId");
 
                     b.HasIndex("ProjectsId");
 
-                    b.ToTable("Project_InternRelation");
+                    b.ToTable("ProjectInternRelation");
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Project_TechnologiesRelation", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.ProjectTechnologiesRelation", b =>
                 {
-                    b.Property<int>("Project_TechnologiesRelationId")
+                    b.Property<int>("ProjectTechnologiesRelationId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -92,13 +92,13 @@ namespace InternsAssessmentTracker.Entities.Migrations
 
                     b.Property<int>("TechnologiesId");
 
-                    b.HasKey("Project_TechnologiesRelationId");
+                    b.HasKey("ProjectTechnologiesRelationId");
 
                     b.HasIndex("ProjectsId");
 
                     b.HasIndex("TechnologiesId");
 
-                    b.ToTable("Project_TechnologiesRelation");
+                    b.ToTable("ProjectTechnologiesRelation");
                 });
 
             modelBuilder.Entity("InternsAssessment.Entities.Entities.Projects", b =>
@@ -109,6 +109,8 @@ namespace InternsAssessmentTracker.Entities.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Name");
 
                     b.HasKey("ProjectsId");
@@ -116,17 +118,17 @@ namespace InternsAssessmentTracker.Entities.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Rating_Master", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.RatingMaster", b =>
                 {
-                    b.Property<int>("Rating_MasterId")
+                    b.Property<int>("RatingMasterId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Rate");
 
-                    b.HasKey("Rating_MasterId");
+                    b.HasKey("RatingMasterId");
 
-                    b.ToTable("Rating_Master");
+                    b.ToTable("RatingMaster");
                 });
 
             modelBuilder.Entity("InternsAssessment.Entities.Entities.Technologies", b =>
@@ -144,16 +146,16 @@ namespace InternsAssessmentTracker.Entities.Migrations
                     b.ToTable("Technologies");
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Intern_Rating", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.InternRating", b =>
                 {
                     b.HasOne("InternsAssessment.Entities.Entities.Interns", "Interns")
-                        .WithMany("Intern_Rating")
+                        .WithMany("InternRating")
                         .HasForeignKey("InternsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("InternsAssessment.Entities.Entities.Rating_Master", "Rating")
-                        .WithMany("Intern_Rating")
-                        .HasForeignKey("Rating_MasterId")
+                    b.HasOne("InternsAssessment.Entities.Entities.RatingMaster", "Rating")
+                        .WithMany("InternRating")
+                        .HasForeignKey("RatingMasterId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("InternsAssessment.Entities.Entities.Technologies", "Technologies")
@@ -162,28 +164,28 @@ namespace InternsAssessmentTracker.Entities.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Project_InternRelation", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.ProjectInternRelation", b =>
                 {
                     b.HasOne("InternsAssessment.Entities.Entities.Interns", "Interns")
-                        .WithMany("Project_InternRelation")
+                        .WithMany("ProjectInternRelation")
                         .HasForeignKey("InternsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("InternsAssessment.Entities.Entities.Projects", "Projects")
-                        .WithMany("Project_InternRelation")
+                        .WithMany("ProjectInternRelation")
                         .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("InternsAssessment.Entities.Entities.Project_TechnologiesRelation", b =>
+            modelBuilder.Entity("InternsAssessment.Entities.Entities.ProjectTechnologiesRelation", b =>
                 {
                     b.HasOne("InternsAssessment.Entities.Entities.Projects", "Projects")
-                        .WithMany("Project_TechnologiesRelation")
+                        .WithMany("ProjectTechnologiesRelation")
                         .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("InternsAssessment.Entities.Entities.Technologies", "Technologies")
-                        .WithMany("Project_TechnologiesRelation")
+                        .WithMany("ProjectTechnologiesRelation")
                         .HasForeignKey("TechnologiesId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

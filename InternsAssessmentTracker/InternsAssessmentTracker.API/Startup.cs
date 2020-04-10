@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using InternsAssessment.Entities.DataContext;
 using InternsAssessment.Entities.Repository;
 using InternsAssessmentTracker.Entities.Repository;
+using InternsAssessmentTracker.Entities.Repository.Interfaces;
 using InternsAssessmentTracker.Services.BusinessObjects;
 using InternsAssessmentTracker.Services.Interfaces;
+using InternsAssessmentTracker.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,8 +34,14 @@ namespace InternsAssessmentTracker.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<IATrackerDbContext>(option => option.UseSqlServer(@"Data Source=AROZARIO01;User ID=sa;Password=Ady6ady@@@;Initial Catalog=InternAssessmentTrackerDb;"));
-            services.AddTransient<IInternService, InternService>();
+            services.AddTransient<IInternService, InternService>();      
             services.AddTransient<IInternRepository, InternRepository>();
+
+            services.AddTransient<IProjectService, ProjectService>();
+            services.AddTransient<IProjectRepository, ProjectRepository>();
+            services.AddTransient<IProjectTechnologiesRepository, ProjectTechnologiesRepository>();
+
+
             //services.AddTransient<IRepository, Repository>();
         }
 

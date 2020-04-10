@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InternsAssessmentTracker.Entities\InternsAssessmentTracker.Entities.csproj" />
+    <ProjectReference Include="..\InternsAssessmentTracker.Models\InternsAssessmentTracker.Models.csproj" />
   </ItemGroup>
 
 </Project>
