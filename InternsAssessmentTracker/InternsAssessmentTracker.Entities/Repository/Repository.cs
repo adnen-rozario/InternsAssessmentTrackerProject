@@ -2,56 +2,51 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InternsAssessment.Entities.Repository
 {
-    public class Repository<TEntity> : IRepository<TEntity>
-         where TEntity : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private readonly IATrackerDbContext context;
-        public Repository(IATrackerDbContext context)
+        protected IATrackerDbContext RepositoryContext { get; set; }
+
+        public Repository(IATrackerDbContext repositoryContext)
         {
-            this.context = context;
-        }
-        public async Task<TEntity> Add(TEntity entity)
-        {
-            context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync();
-            return entity;
+            this.RepositoryContext = repositoryContext;
         }
 
-        public async Task<TEntity> Delete(int id)
+        public IQueryable<T> FindAll()
         {
-            var entity = await context.Set<TEntity>().FindAsync(id);
-            if (entity == null)
-            {
-                return entity;
-            }
-
-            context.Set<TEntity>().Remove(entity);
-            await context.SaveChangesAsync();
-
-            return entity;
+            return this.RepositoryContext.Set<T>().AsNoTracking();
         }
 
-        public async Task<TEntity> Get(int id)
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            return this.RepositoryContext.Set<T>().Where(expression).AsNoTracking();
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public void Create(T entity)
         {
-            return await context.Set<TEntity>().ToListAsync();
+            this.RepositoryContext.Set<T>().Add(entity);
         }
 
-        public async Task<TEntity> Update(TEntity entity)
+        public void Update(T entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync();
-            return entity;
+            this.RepositoryContext.Set<T>().Update(entity);
         }
 
+        public void Delete(T entity)
+        {
+            this.RepositoryContext.Set<T>().Remove(entity);
+        }
+
+        public void Save()
+        {
+            this.RepositoryContext.SaveChanges();
+        }
     }
 }

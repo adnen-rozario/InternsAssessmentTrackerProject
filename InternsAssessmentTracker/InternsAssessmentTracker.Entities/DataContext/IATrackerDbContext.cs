@@ -8,7 +8,7 @@ namespace InternsAssessment.Entities.DataContext
 {
     public class IATrackerDbContext:DbContext
     {
-        public IATrackerDbContext(DbContextOptions<IATrackerDbContext> options) : base(options)
+        public IATrackerDbContext(DbContextOptions options) : base(options)
         {
 
         }

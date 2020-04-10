@@ -10,13 +10,13 @@ namespace InternsAssessmentTracker.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InternsController : ControllerBase
+    public class InternController : ControllerBase
     {
-        private readonly ImanageInterns manageInterns;
+        private readonly IInternService InternService;
 
-        public InternsController(ImanageInterns manageInterns)
+        public InternController(IInternService internService)
         {
-            this.manageInterns = manageInterns;
+            InternService = internService;
         }
 
         // GET: api/Interns
@@ -37,7 +37,14 @@ namespace InternsAssessmentTracker.API.Controllers
         [HttpPost]
         public void Post()
         {
-            this.manageInterns.AddIntern();
+            try
+            {
+                InternService.AddIntern();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         // PUT: api/Interns/5

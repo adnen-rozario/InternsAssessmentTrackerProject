@@ -4,7 +4,7 @@ using System.Text;
 
 namespace InternsAssessmentTracker.Services.Interfaces
 {
-    public interface ImanageInterns
+    public interface IInternService
     {
         void AddIntern();
     }
