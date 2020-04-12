@@ -14,17 +14,20 @@ namespace InternsAssessmentTracker.Services.Services
     {
         private readonly IProjectRepository projectRepository;
         private readonly IProjectTechnologiesRepository projectTechnologiesRepository;
+        private readonly ITechnologyRepository technologyRepository;
 
-        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository)
+
+        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository, ITechnologyRepository technologyRepository)
         {
             this.projectRepository = projectRepository;
             this.projectTechnologiesRepository = projectTechnologiesRepository;
+            this.technologyRepository = technologyRepository;
         }
 
         public bool AddProject(ProjectRequest requestProject)
         {
             try
-            {     
+            {
                 if (!string.IsNullOrEmpty(requestProject.ProjectName))
                 {
                     Projects project = new Projects()
@@ -52,6 +55,24 @@ namespace InternsAssessmentTracker.Services.Services
                 }
 
                 return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<KeyValueResponse> GetTechnologies()
+        {
+            try
+            {
+                return this.technologyRepository.FindAll()
+                    .Select(
+                    x => new KeyValueResponse()
+                    {
+                        Key = x.TechnologiesId,
+                        Value = x.Name
+                    });
             }
             catch (Exception ex)
             {

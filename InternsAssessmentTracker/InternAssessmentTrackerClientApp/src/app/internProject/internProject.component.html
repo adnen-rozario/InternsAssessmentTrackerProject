@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="button-wrapper">
+      <button mat-flat-button class="btn btn-success" (click) = toggleDisplay($event) [hidden] ="isShow">Add Project</button>
+    </div>
+  <form [formGroup]="addProjectForm" (ngSubmit)="AddProject()" novalidate class="form" [hidden] ="!isShow">
+        
+      
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Name" formControlName="projectName">
+        <mat-error *ngIf="!addProjectForm.controls['projectName'].valid || addProjectForm.controls['projectName'].touched">
+            <strong>Project Name</strong> is required
+         </mat-error>
+      </mat-form-field>
+  
+      
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Description" formControlName="projectDescription">
+        <mat-error *ngIf="!addProjectForm.controls['projectDescription'].valid || addProjectForm.controls['projectDescription'].touched">
+          <strong>Project Description</strong> is required
+         </mat-error>
+      </mat-form-field>
+  
+
+
+        <mat-form-field ng-if="technologiesList.length > 0">
+            <mat-select placeholder="Technologies" formControlName="techId" [(value)]="selectedTechnologies" multiple>
+              <mat-option *ngFor="let technology of technologiesList" [value]="technology.key">{{technology.value}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!addProjectForm.controls['techId'].valid || addProjectForm.controls['techId'].touched">
+              <strong>Technologies</strong> is required
+             </mat-error>
+          </mat-form-field>
+        
+      <div class="button-wrapper">
+        <button mat-flat-button id="#cancelButton" class="btn btn-danger" (click) = toggleDisplay($event) >Cancel</button>
+        <button mat-flat-button color="primary" class="ml-2">Save</button>
+      </div>
+  
+    </form>
+  </div>

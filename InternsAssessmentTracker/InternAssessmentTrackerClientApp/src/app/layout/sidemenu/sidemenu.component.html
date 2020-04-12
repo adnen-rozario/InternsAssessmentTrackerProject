@@ -24,6 +24,30 @@
           <h3 matLine>Data</h3>
           <p matLine>sample data page</p>
         </a>
+
+        <a
+          id="sampleIntern"
+          mat-list-item
+          [routerLink]="['./intern']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+        >
+          <mat-icon matListAvatar>grid_on</mat-icon>
+          <h3 matLine>Intern</h3>
+          <!-- <p matLine>sample data page</p> -->
+        </a>
+
+        <a
+          id="sampleInternProject"
+          mat-list-item
+          [routerLink]="['./project']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+        >
+          <mat-icon matListAvatar>grid_on</mat-icon>
+          <h3 matLine>Project</h3>
+          <!-- <p matLine>sample data page</p> -->
+        </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

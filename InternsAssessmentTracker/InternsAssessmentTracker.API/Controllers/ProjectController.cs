@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InternsAssessmentTracker.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
@@ -21,6 +21,8 @@ namespace InternsAssessmentTracker.API.Controllers
         }
 
         [HttpPost]
+        [Route("api/Project")]
+
         public IActionResult Post(ProjectRequest request)
         {
             try
@@ -28,6 +30,30 @@ namespace InternsAssessmentTracker.API.Controllers
                 var response = projectService.AddProject(request);
 
                 if (response == true)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Technologies")]
+
+        public IActionResult GetTechnologies()
+        {
+            try
+            {
+                var response = projectService.GetTechnologies();
+
+                if (response.Any())
                 {
                     return Ok(response);
                 }

@@ -8,5 +8,7 @@ namespace InternsAssessmentTracker.Services.Interfaces
     public interface IProjectService
     {
         bool AddProject(ProjectRequest requestProject);
+
+        IEnumerable<KeyValueResponse> GetTechnologies();
     }
 }
