@@ -24,32 +24,34 @@ namespace InternsAssessmentTracker.Services.Services
         public bool AddProject(ProjectRequest requestProject)
         {
             try
-            {
-                Projects project = new Projects()
-                {
-                    Name = requestProject.ProjectName,
-                    Description = requestProject.ProjectDescription,
-                    CreatedDate = DateTime.Now
-                };
-
+            {     
                 if (!string.IsNullOrEmpty(requestProject.ProjectName))
                 {
+                    Projects project = new Projects()
+                    {
+                        Name = requestProject.ProjectName,
+                        Description = requestProject.ProjectDescription,
+                        CreatedDate = DateTime.Now
+                    };
+
                     this.projectRepository.Create(project);
                     this.projectRepository.Save();
-                }
 
-                if (requestProject.TechId.Any() && project.ProjectsId != 0)
-                {
-                    foreach (var id in requestProject.TechId)
+                    if (requestProject.TechId.Any() && project.ProjectsId != 0)
                     {
-                        this.projectTechnologiesRepository
-                            .Create(new ProjectTechnologiesRelation() { ProjectsId = project.ProjectsId, TechnologiesId = id });
-                    }
+                        foreach (var id in requestProject.TechId)
+                        {
+                            this.projectTechnologiesRepository
+                                .Create(new ProjectTechnologiesRelation() { ProjectsId = project.ProjectsId, TechnologiesId = id });
+                        }
 
-                    this.projectTechnologiesRepository.Save();
+                        this.projectTechnologiesRepository.Save();
+
+                        return true;
+                    }
                 }
 
-                return true;
+                return false;
             }
             catch (Exception ex)
             {

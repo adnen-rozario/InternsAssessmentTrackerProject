@@ -34,15 +34,16 @@ namespace InternsAssessmentTracker.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<IATrackerDbContext>(option => option.UseSqlServer(@"Data Source=AROZARIO01;User ID=sa;Password=Ady6ady@@@;Initial Catalog=InternAssessmentTrackerDb;"));
-            services.AddTransient<IInternService, InternService>();      
+                  
             services.AddTransient<IInternRepository, InternRepository>();
-
-            services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<IProjectTechnologiesRepository, ProjectTechnologiesRepository>();
+            services.AddTransient<IInternRatingRepository, InternRatingRepository>();
 
 
-            //services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IInternService, InternService>();
+            services.AddTransient<IProjectService, ProjectService>();
+            services.AddTransient<IRatingService, RatingService>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

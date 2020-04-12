@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+    <mat-sidenav [disableClose]="false" mode="over" #sidenav>
+      <mat-nav-list>
+        <a
+          id="home"
+          mat-list-item
+          [routerLink]="['./']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon matListAvatar>home</mat-icon>
+          <h3 matLine>Home</h3>
+          <p matLine>sample home page</p>
+        </a>
+        <a
+          id="sampleData"
+          mat-list-item
+          [routerLink]="['./data']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+        >
+          <mat-icon matListAvatar>grid_on</mat-icon>
+          <h3 matLine>Data</h3>
+          <p matLine>sample data page</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -24,9 +24,19 @@ namespace InternsAssessment.Entities.Repository
             return this.RepositoryContext.Set<T>().AsNoTracking();
         }
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,string includeProperties = "")
         {
-            return this.RepositoryContext.Set<T>().Where(expression).AsNoTracking();
+            IQueryable<T> query = this.RepositoryContext.Set<T>().Where(expression);
+
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            query = query.AsNoTracking();
+
+            return query;
+           // return this.RepositoryContext.Set<T>().Where(expression).AsNoTracking();
         }
 
         public void Create(T entity)
