@@ -14,6 +14,7 @@ export class AppComponent {
 
   constructor(private adalService: AdalService) 
    {
+    
    }
   ngOnInit() 
   {
@@ -21,6 +22,7 @@ export class AppComponent {
     this.adalService.handleWindowCallback();
     if(!this.adalService.userInfo.authenticated)
     this.adalService.login();
+
     this.isAuthenticated= this.adalService.userInfo.authenticated
   }
 }

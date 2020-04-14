@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/shared/sidebar.service';
+import { AdalService } from 'adal-angular4';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { SidebarService } from 'src/app/shared/sidebar.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private sidebar: SidebarService) { }
+  constructor(private sidebar: SidebarService,private adalService:AdalService) { }
 
   ngOnInit(): void {
   }
@@ -16,4 +17,9 @@ export class NavbarComponent implements OnInit {
   toggleRightSidenav() {
     this.sidebar.toggle();
  }
+
+ LogOut()
+    {
+      this.adalService.logOut();
+    }
 }
