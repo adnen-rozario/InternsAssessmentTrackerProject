@@ -12,10 +12,15 @@ namespace InternsAssessmentTracker.Services.Services
     public class RatingService : IRatingService
     {
         private readonly IInternRatingRepository internRatingRepository;
+        private readonly IRatingMasterRepository ratingMasterRepository;
+        private readonly IProjectInternRepository projectInternRepository;
 
-        public RatingService(IInternRatingRepository internRatingRepository)
+
+        public RatingService(IInternRatingRepository internRatingRepository, IRatingMasterRepository ratingMasterRepository, IProjectInternRepository projectInternRepository)
         {
             this.internRatingRepository = internRatingRepository;
+            this.ratingMasterRepository = ratingMasterRepository;
+            this.projectInternRepository = projectInternRepository;
         }
 
         public bool AddInternRating(InternRatingRequest request)
@@ -24,6 +29,7 @@ namespace InternsAssessmentTracker.Services.Services
             {
                 if (request.InternId != 0 && request.Rating.Any())
                 {
+                    var avgInternRating = request.Rating.Average(x => x.RatingId);
                     foreach (var rate in request.Rating)
                     {
                         this.internRatingRepository.Create(new InternRating() { InternsId = request.InternId, RatingMasterId = rate.RatingId, TechnologiesId = rate.TechId, CreatedDate = DateTime.Now });
@@ -48,26 +54,59 @@ namespace InternsAssessmentTracker.Services.Services
             {
                 if (request.InternId != 0)
                 {
-                    var response = this.internRatingRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Technologies,Technologies.ProjectTechnologiesRelation,Technologies.ProjectTechnologiesRelation.Projects,Rating")
-                         .ToList()
-                         .Select(
-                         x => new InternRatingResponse()
-                         {
-                             InternId = x.Interns.InternsId,
-                             InternName = x.Interns?.Name,
-                             //ProjectName = x.Interns?.ProjectInternRelation?.FirstOrDefault()?.Projects.Name,
-                             ProjectName = x.Technologies.ProjectTechnologiesRelation.Select(y => y.Projects.Name).FirstOrDefault(),
-                             
+                    //var response = this.internRatingRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Technologies,Technologies.ProjectTechnologiesRelation,Technologies.ProjectTechnologiesRelation.Projects,Rating")
+                    //     .ToList()
+                    //     .Select(
+                    //     x => new InternRatingResponse()
+                    //     {
+                    //         InternId = x.Interns.InternsId,
+                    //         InternName = x.Interns?.Name,
+                    //         //ProjectName = x.Interns?.ProjectInternRelation?.FirstOrDefault()?.Projects.Name,
+                    //         ProjectName = x.Technologies.ProjectTechnologiesRelation.Select(y => y.Projects.Name).FirstOrDefault(),
+                    //         TechId = x.TechnologiesId,
+                    //         ProjectDescription = x.Technologies.ProjectTechnologiesRelation.Select(y => y.Projects.Description).FirstOrDefault(),
 
-                             TechnologyName = x.Technologies?.Name,
-                             TechnologyRating = x.Rating?.Rate
-                         });
+                    //         TechnologyName = x.Technologies?.Name,
+                    //         TechnologyRating = x.Rating?.Rate
+                    //     });
+
+                    var response = this.projectInternRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Projects,Projects.ProjectTechnologiesRelation,Projects.ProjectTechnologiesRelation.Technologies")
+                        .ToList()
+                        .Select(
+                        x => new InternRatingResponse()
+                        {
+                            InternId = x.InternsId,
+                            InternName = x.Interns.Name,
+                            ProjectName = x.Projects.Name,
+                            ProjectDescription = x.Projects.Description,
+                            TechIds = x.Projects.ProjectTechnologiesRelation.Select(y => y.TechnologiesId).ToList(),
+                            TechnologyNameList = x.Projects.ProjectTechnologiesRelation.Select(y => y.Technologies.Name).ToList()
+
+                        });
 
 
                     return response;
                 }
 
                 return Enumerable.Empty<InternRatingResponse>();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<KeyValueResponse> GetRatings()
+        {
+            try
+            {
+                return this.ratingMasterRepository.FindAll()
+                      .Select(x =>
+                      new KeyValueResponse()
+                      {
+                          Key = x.RatingMasterId,
+                          Value = x.Rate
+                      });
             }
             catch (Exception ex)
             {

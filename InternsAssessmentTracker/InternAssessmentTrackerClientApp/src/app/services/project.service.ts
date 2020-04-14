@@ -6,6 +6,7 @@ import { Intern } from '../models/internModel';
 import { environment } from '../../environments/environment';
 import { KeyValue } from '../models/keyvalueModel';
 import { Project } from '../models/projectModel';
+import { AssignProject } from '../models/assignprojectModel';
 
 @Injectable()
 export class ProjectService
@@ -14,7 +15,7 @@ export class ProjectService
   constructor(private http: HttpClient) {  
      }
 
-     private projectServiceUrl= environment.apiUrl+'Project/';
+     private projectServiceUrl= environment.apiUrl+'Project';
      private technologyServiceUrl= environment.apiUrl+'Technologies/';
 
     
@@ -35,6 +36,36 @@ export class ProjectService
         const headers = new HttpHeaders({ 'Content-Type': 'application/json'}); 
         
         return this.http.post<boolean>(this.projectServiceUrl, projectDetails, { headers: headers })  
+        .pipe(  
+            catchError(this.handleError)  
+          ); 
+
+    }
+
+    getProject(): Observable<Project[]>
+    {
+        
+        return this.http.get<Project[]>(this.projectServiceUrl)  
+        .pipe(  
+            catchError(this.handleError)  
+          ); 
+
+    }
+
+    getProjectNames(): Observable<KeyValue[]>
+    {        
+        return this.http.get<KeyValue[]>(this.projectServiceUrl+'names')        
+        .pipe(  
+            catchError(this.handleError)  
+          ); 
+
+    }
+
+    assignProject(assignDetails:AssignProject): Observable<boolean>
+    {        
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json'}); 
+
+        return this.http.post<boolean>(this.projectServiceUrl+'assign', assignDetails, { headers: headers })        
         .pipe(  
             catchError(this.handleError)  
           ); 

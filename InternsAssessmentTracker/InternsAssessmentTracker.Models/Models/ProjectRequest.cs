@@ -12,6 +12,6 @@ namespace InternsAssessmentTracker.Models.Models
 
         public string ProjectDescription { get; set; }
 
-        public List<int> TechId { get; set; }
+        public List<int> TechId { get; set; }        
     }
 }

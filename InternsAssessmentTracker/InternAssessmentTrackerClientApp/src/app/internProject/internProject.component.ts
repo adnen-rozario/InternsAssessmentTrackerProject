@@ -17,6 +17,7 @@ export class InternProjectComponent implements OnInit {
   subscription: Subscription;
   addProjectForm: FormGroup;
   isShow = false;
+  projs:Project[];
 
 
   constructor(private projectService:ProjectService,private fb: FormBuilder) { }
@@ -24,6 +25,7 @@ export class InternProjectComponent implements OnInit {
   ngOnInit(): void {
     
     this.reactiveForm();
+    this.getProjects();
   }
 
   toggleDisplay(event) {
@@ -80,6 +82,22 @@ export class InternProjectComponent implements OnInit {
    }
    );
   }
+
+  getProjects()
+{
+  
+  this.projectService.getProject().subscribe((data) =>
+  {
+    this.projs=data as Project[];
+ console.log(this.projs);
+ },
+ (err: HttpErrorResponse) => {
+   console.log("error");
+ console.log (err.message);
+ }
+ );
+
+}
 
 //   ngOnDestroy() {
 //     this.subscription.unsubscribe()

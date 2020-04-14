@@ -15,13 +15,15 @@ namespace InternsAssessmentTracker.Services.Services
         private readonly IProjectRepository projectRepository;
         private readonly IProjectTechnologiesRepository projectTechnologiesRepository;
         private readonly ITechnologyRepository technologyRepository;
+        private readonly IProjectInternRepository projectInternRepository;
 
 
-        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository, ITechnologyRepository technologyRepository)
+        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository, ITechnologyRepository technologyRepository, IProjectInternRepository projectInternRepository)
         {
             this.projectRepository = projectRepository;
             this.projectTechnologiesRepository = projectTechnologiesRepository;
             this.technologyRepository = technologyRepository;
+            this.projectInternRepository = projectInternRepository;
         }
 
         public bool AddProject(ProjectRequest requestProject)
@@ -73,6 +75,64 @@ namespace InternsAssessmentTracker.Services.Services
                         Key = x.TechnologiesId,
                         Value = x.Name
                     });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<ProjectResponse> GetProjects()
+        {
+            try
+            {
+                return this.projectRepository.FindByCondition(x => x.ProjectsId != 0, "ProjectTechnologiesRelation.Technologies")
+                .Select(x => new ProjectResponse()
+                {
+                    ProjectName = x.Name,
+                    ProjectDescription = x.Description,
+                    ProjectId = x.ProjectsId,
+                    CreatedDate = x.CreatedDate,
+                    ProjectTechnologies = string.Join(",", x.ProjectTechnologiesRelation.Select(y => y.Technologies.Name))
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<KeyValueResponse> GetProjectNames()
+        {
+            try
+            {
+                return this.projectRepository.FindByCondition(x => x.ProjectsId != 0, "ProjectTechnologiesRelation.Technologies")
+                .Select(x => new KeyValueResponse()
+                {
+                    Key = x.ProjectsId,
+                    Value = x.Name
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool AssignProjectToIntern(AssignProjectRequest request)
+        {
+            try
+            {
+                if (request.InternId != 0 && request.ProjId != 0)
+                {
+                    this.projectInternRepository.Create(new ProjectInternRelation() { InternsId = request.InternId, ProjectsId = request.ProjId });
+                    this.projectInternRepository.Save();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {

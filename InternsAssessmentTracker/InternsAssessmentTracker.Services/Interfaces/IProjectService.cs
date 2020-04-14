@@ -10,5 +10,10 @@ namespace InternsAssessmentTracker.Services.Interfaces
         bool AddProject(ProjectRequest requestProject);
 
         IEnumerable<KeyValueResponse> GetTechnologies();
+
+        IEnumerable<ProjectResponse> GetProjects();
+
+        IEnumerable<KeyValueResponse> GetProjectNames();
+        bool AssignProjectToIntern(AssignProjectRequest request);
     }
 }

@@ -45,12 +45,26 @@ namespace InternsAssessmentTracker.API.Controllers
         }
 
         [HttpPost]
-        [Route("api/GetInternRating")]
+        [Route("api/getinternrating")]
         public IActionResult GetInternRating(InternRatingRequest request)
         {
             try
             {
                 return Ok(ratingService.GetInternRatings(request));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/getratings")]
+        public IActionResult GetRatings()
+        {
+            try
+            {
+                return Ok(ratingService.GetRatings());
             }
             catch (Exception)
             {

@@ -30,9 +30,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InternProjectComponent } from './internProject/internProject.component';
 import { ProjectService } from './services/project.service';
+import { InternratingComponent } from './intern/internrating/internrating.component';
+import { AssignprojectComponent } from './intern/assignproject/assignproject.component';
+import { RatingService } from './services/rating.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DataComponent, InternComponent, InternProjectComponent],
+  declarations: [AppComponent, HomeComponent, DataComponent, InternComponent, InternProjectComponent, InternratingComponent, AssignprojectComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,7 +62,7 @@ import { ProjectService } from './services/project.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SidebarService,InternService,ProjectService],
+  providers: [SidebarService,InternService,ProjectService,RatingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

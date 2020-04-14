@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="button-wrapper">
-    <button mat-flat-button class="btn btn-success" (click) = toggleDisplay($event) [hidden] ="isShow">Add Intern</button>
-  </div>
+  <h2>Interns</h2>
 <form [formGroup]="addInternForm" (ngSubmit)="AddIntern()" novalidate class="form" [hidden] ="!isShow">
       
     
@@ -34,4 +32,38 @@
     </div>
 
   </form>
+</div>
+
+<div class="container">
+  <div class="button-wrapper">
+    <button mat-flat-button class="btn btn-success" (click) = toggleDisplay($event) [hidden] ="isShow">Add Intern</button>
+  </div>
+            
+  <table class="table mt-5" [hidden] ="isShow">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone No</th>
+        <th>Created Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let intern of interns">
+        <td><a [routerLink]="['/rating',intern.internId]">{{intern.name}}</a></td>
+        <td>{{intern.emailId}}</td>
+        <td>{{intern.phoneNo}}</td>
+        <td>{{intern.createdDate | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <button class="btn btn-warning" [routerLink]="['/assignproject',intern.internId]">Assign Project</button>
+          <button class="btn btn-danger ml-5" [routerLink]="['/rating',intern.internId]">Rate Intern</button>
+        </td>
+        
+
+
+      </tr>
+      
+    </tbody>
+  </table>
 </div>

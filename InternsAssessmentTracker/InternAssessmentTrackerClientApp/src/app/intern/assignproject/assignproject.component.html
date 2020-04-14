@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Assign Project</h2>
+  <form [formGroup]="assignProjectForm" (ngSubmit)="AssignProject()" novalidate class="form">
+        
+      
+    <mat-form-field ng-if="projectsList.length > 0">
+        <mat-select placeholder="Projects" formControlName="projId">
+          <mat-option *ngFor="let project of projectsList" [value]="project.key">{{project.value}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!assignProjectForm.controls['projId'].valid || assignProjectForm.controls['projId'].touched">
+          <strong>Project</strong> is required
+         </mat-error>
+      </mat-form-field>
+  
+      
+  
+      <div class="button-wrapper">
+        <button mat-flat-button id="#cancelButton" class="btn btn-danger" [routerLink]="['/intern']">Cancel</button>
+        <button mat-flat-button color="primary" class="ml-2">Assign</button>
+      </div>
+  
+    </form>
+  </div>

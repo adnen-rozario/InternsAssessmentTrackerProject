@@ -46,7 +46,8 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
                                                   Name = x.Name,
                                                   EmailId = x.EmailId,
                                                   PhoneNo = x.PhoneNo,
-                                                  CreatedDate = x.CreatedDate
+                                                  CreatedDate = x.CreatedDate,
+                                                  InternId = x.InternsId
                                               });
 
             }

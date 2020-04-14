@@ -45,6 +45,30 @@ namespace InternsAssessmentTracker.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/Project")]
+
+        public IActionResult Get()
+        {
+            try
+            {
+                var response = projectService.GetProjects();
+
+                if (response.Any())
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
         [Route("api/Technologies")]
 
         public IActionResult GetTechnologies()
@@ -54,6 +78,54 @@ namespace InternsAssessmentTracker.API.Controllers
                 var response = projectService.GetTechnologies();
 
                 if (response.Any())
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Projectnames")]
+
+        public IActionResult GetProjectNames()
+        {
+            try
+            {
+                var response = projectService.GetProjectNames();
+
+                if (response.Any())
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        [Route("api/Projectassign")]
+
+        public IActionResult AssignProjectToIntern(AssignProjectRequest request)
+        {
+            try
+            {
+                var response = projectService.AssignProjectToIntern(request);
+
+                if (response)
                 {
                     return Ok(response);
                 }

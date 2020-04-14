@@ -9,5 +9,6 @@ namespace InternsAssessmentTracker.Services.Interfaces
     {
         bool AddInternRating(InternRatingRequest request);
         IEnumerable<InternRatingResponse> GetInternRatings(InternRatingRequest request);
+        IEnumerable<KeyValueResponse> GetRatings();
     }
 }

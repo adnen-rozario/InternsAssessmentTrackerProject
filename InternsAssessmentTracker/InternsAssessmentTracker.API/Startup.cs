@@ -51,7 +51,9 @@ namespace InternsAssessmentTracker.API
             services.AddTransient<IProjectTechnologiesRepository, ProjectTechnologiesRepository>();
             services.AddTransient<IInternRatingRepository, InternRatingRepository>();
             services.AddTransient<ITechnologyRepository, TechnologyRepository>();
-
+            services.AddTransient<IProjectInternRepository, ProjectInternRepository>();
+            services.AddTransient<IRatingMasterRepository, RatingMasterRepository>();
+            
 
             services.AddTransient<IInternService, InternService>();
             services.AddTransient<IProjectService, ProjectService>();

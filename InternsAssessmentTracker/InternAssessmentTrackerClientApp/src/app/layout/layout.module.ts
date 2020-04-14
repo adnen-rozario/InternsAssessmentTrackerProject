@@ -22,6 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   declarations: [LayoutComponent, NavbarComponent, SidemenuComponent],
@@ -44,7 +46,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSelectModule,
     MatMenuModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule
   ],
   exports:[
     LayoutComponent,
@@ -63,7 +66,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSelectModule,
     MatMenuModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule
   ]
 })
 export class LayoutModule { }

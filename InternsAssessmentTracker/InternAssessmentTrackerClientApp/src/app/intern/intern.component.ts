@@ -17,12 +17,17 @@ export class InternComponent implements OnInit {
   addInternForm: FormGroup;
   internDetails: Intern;  
   isShow = false;
+  interns:Intern[];
 
   constructor(private fb: FormBuilder,private internService :InternService) { }
 
   ngOnInit(): void {
     this.reactiveForm()
-  }
+    this.getIntern()
+
+  } 
+
+  
 
   toggleDisplay(event) {
     this.isShow = !this.isShow;
@@ -63,6 +68,11 @@ AddIntern() {
       this.internService.addIntern(internDetails).subscribe((data) =>
        {
       console.log('data returned '+data);
+
+      if(data)
+      {
+        this.isShow = !this.isShow;
+      }
       },
       (err: HttpErrorResponse) => {
         console.log("error");
@@ -72,6 +82,22 @@ AddIntern() {
 
   console.log(internDetails);
   }
+}
+
+getIntern()
+{
+  
+  this.internService.getIntern().subscribe((data) =>
+  {
+    this.interns=data;
+ console.log('data returned '+data);
+ },
+ (err: HttpErrorResponse) => {
+   console.log("error");
+ console.log (err.message);
+ }
+ );
+
 }
 
 getErrorEmail() {

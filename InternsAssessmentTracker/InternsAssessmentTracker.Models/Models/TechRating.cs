@@ -8,8 +8,24 @@ namespace InternsAssessmentTracker.Models.Models
     {
         public int TechId { get; set; }
 
+        public string TechName
+        {
+            set
+            {
+                this.TechId = int.Parse(value);
+            }
+        }
+
+        public string RatingName
+        {
+            set
+            {
+                this.RatingId = int.Parse(value);
+            }
+        }
+
         public int RatingId { get; set; }
 
-        
+
     }
 }
