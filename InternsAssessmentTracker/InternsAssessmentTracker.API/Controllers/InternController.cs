@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InternsAssessmentTracker.API.Logging;
 using InternsAssessmentTracker.Models.Models;
 using InternsAssessmentTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -13,10 +14,12 @@ namespace InternsAssessmentTracker.API.Controllers
     public class InternController : ControllerBase
     {
         private readonly IInternService internService;
+        private ILog logger;
 
-        public InternController(IInternService internService)
+        public InternController(IInternService internService, ILog logger)
         {
             this.internService = internService;
+            this.logger = logger;
         }
 
         // GET: api/Intern
@@ -26,25 +29,30 @@ namespace InternsAssessmentTracker.API.Controllers
         {
             try
             {
+
                 return Ok(internService.GetIntern());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Error(ex);
+
+                throw ex;
             }
         }
 
         // GET: api/Intern/5
-        [HttpGet("{id}", Name = "Get")]
-        [Route("api/Intern")]
+        [HttpGet]
+        [Route("api/Intern/{id}")]
         public IActionResult Get(int id)
         {
             try
             {
                 return Ok(internService.GetInternById(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex);
+
                 throw;
             }
         }
@@ -67,8 +75,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex);
+
                 throw;
             }
         }
@@ -91,15 +101,17 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex);
+
                 throw;
             }
         }
 
         // DELETE: api/Intern/5
-        [HttpDelete("{id}")]
-        [Route("api/Intern")]
+        [HttpDelete]
+        [Route("api/Intern/{id}")]
 
         public IActionResult Delete(int id)
         {
@@ -115,10 +127,10 @@ namespace InternsAssessmentTracker.API.Controllers
                 {
                     return BadRequest();
                 }
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
                 throw;
             }
         }
@@ -131,8 +143,10 @@ namespace InternsAssessmentTracker.API.Controllers
             {
                 return Ok(internService.GetDashboardValues());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }

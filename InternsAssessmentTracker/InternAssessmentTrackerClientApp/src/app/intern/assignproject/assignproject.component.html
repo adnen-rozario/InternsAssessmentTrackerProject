@@ -3,7 +3,7 @@
   <form [formGroup]="assignProjectForm" (ngSubmit)="AssignProject()" novalidate class="form">
         
       
-    <mat-form-field *ngif="projectsList.length > 0" class="form-element">
+    <mat-form-field class="form-element">
         <mat-select placeholder="Projects" formControlName="projId">
           <mat-option *ngFor="let project of projectsList" [value]="project.key">{{project.value}}</mat-option>
         </mat-select>
@@ -12,7 +12,7 @@
          </mat-error>
       </mat-form-field>
 
-      <mat-form-field ngif="mentorList.length > 0" class="form-element">
+      <mat-form-field class="form-element">
         <mat-select placeholder="Mentors" formControlName="mentorId">
           <mat-option *ngFor="let mentor of mentorList" [value]="mentor.key">{{mentor.value}}</mat-option>
         </mat-select>

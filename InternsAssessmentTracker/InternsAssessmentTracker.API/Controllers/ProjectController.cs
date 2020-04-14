@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InternsAssessmentTracker.API.Logging;
 using InternsAssessmentTracker.Models.Models;
 using InternsAssessmentTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -14,10 +15,12 @@ namespace InternsAssessmentTracker.API.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly IProjectService projectService;
+        private ILog logger;
 
-        public ProjectController(IProjectService projectService)
+        public ProjectController(IProjectService projectService, ILog logger)
         {
             this.projectService = projectService;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -38,8 +41,9 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
                 throw;
             }
         }
@@ -62,8 +66,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }
@@ -86,8 +92,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }
@@ -110,8 +118,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }
@@ -134,8 +144,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }
@@ -158,8 +170,10 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }

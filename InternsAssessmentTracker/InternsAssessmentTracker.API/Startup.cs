@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using InternsAssessment.Entities.DataContext;
 using InternsAssessment.Entities.Repository;
+using InternsAssessmentTracker.API.Logging;
 using InternsAssessmentTracker.Entities.Repository;
 using InternsAssessmentTracker.Entities.Repository.Interfaces;
 using InternsAssessmentTracker.Services.BusinessObjects;
@@ -17,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NLog;
 
 namespace InternsAssessmentTracker.API
 {
@@ -24,6 +27,7 @@ namespace InternsAssessmentTracker.API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(System.String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -43,7 +47,8 @@ namespace InternsAssessmentTracker.API
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
+            services.AddSingleton<ILog, LogNLog>();
+
             services.AddDbContext<IATrackerDbContext>(option => option.UseSqlServer(@"Data Source=AROZARIO01;User ID=sa;Password=Ady6ady@@@;Initial Catalog=InternAssessmentTrackerDb;"));
                   
             services.AddTransient<IInternRepository, InternRepository>();

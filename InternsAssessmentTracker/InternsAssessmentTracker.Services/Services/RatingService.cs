@@ -28,8 +28,7 @@ namespace InternsAssessmentTracker.Services.Services
 
         public bool AddInternRating(InternRatingRequest request)
         {
-            try
-            {
+           
                 if (request.InternId != 0 && request.Rating.Any())
                 {
                     var avgInternRating = (int)request.Rating.Average(x => x.RatingId);
@@ -50,18 +49,11 @@ namespace InternsAssessmentTracker.Services.Services
                     return true;
                 }
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                return false;            
         }
 
         public IEnumerable<InternRatingResponse> GetInternRatings(InternRatingRequest request)
         {
-            try
-            {
                 if (request.InternId != 0)
                 {
                     //var response = this.internRatingRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Technologies,Technologies.ProjectTechnologiesRelation,Technologies.ProjectTechnologiesRelation.Projects,Rating")
@@ -98,30 +90,18 @@ namespace InternsAssessmentTracker.Services.Services
                     return response;
                 }
 
-                return Enumerable.Empty<InternRatingResponse>();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                return Enumerable.Empty<InternRatingResponse>();            
         }
 
         public IEnumerable<KeyValueResponse> GetRatings()
         {
-            try
-            {
                 return this.ratingMasterRepository.FindAll()
                       .Select(x =>
                       new KeyValueResponse()
                       {
                           Key = x.RatingMasterId,
                           Value = x.Rate
-                      });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                      });            
         }
     }
 }

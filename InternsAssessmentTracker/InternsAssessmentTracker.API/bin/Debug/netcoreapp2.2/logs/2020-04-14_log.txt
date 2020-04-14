@@ -1,0 +1,27 @@
+2020-04-14 21:11:52.1666 INFO Information is logged
+2020-04-14 21:12:10.3719 WARN Warning is logged
+2020-04-14 21:12:13.0164 DEBUG Debug log is logged
+2020-04-14 21:12:16.3681 ERROR Error is logged
+2020-04-14 21:36:58.1986 ERROR sfdfh
+2020-04-14 21:50:57.3997 ERROR Value cannot be null.
+Parameter name: entity
+2020-04-14 22:00:47.1172 ERROR Value cannot be null.
+Parameter name: entity
+2020-04-14 22:21:08.6516 ERROR System.ArgumentNullException: Value cannot be null.
+Parameter name: entity
+   at Microsoft.EntityFrameworkCore.Utilities.Check.NotNull[T](T value, String parameterName)
+   at Microsoft.EntityFrameworkCore.DbContext.Remove[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Remove(TEntity entity)
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(T entity) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 67
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(Object id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 57
+   at InternsAssessmentTracker.Services.BusinessObjects.InternService.DeleteIntern(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Services\Services\InternService.cs:line 137
+   at InternsAssessmentTracker.API.Controllers.InternController.Delete(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\Controllers\InternController.cs:line 116
+2020-04-14 22:27:38.9838 ERROR System.ArgumentNullException: Value cannot be null.
+Parameter name: entity
+   at Microsoft.EntityFrameworkCore.Utilities.Check.NotNull[T](T value, String parameterName)
+   at Microsoft.EntityFrameworkCore.DbContext.Remove[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Remove(TEntity entity)
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(T entity) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 67
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(Object id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 57
+   at InternsAssessmentTracker.Services.BusinessObjects.InternService.DeleteIntern(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Services\Services\InternService.cs:line 136
+   at InternsAssessmentTracker.API.Controllers.InternController.Delete(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\Controllers\InternController.cs:line 116

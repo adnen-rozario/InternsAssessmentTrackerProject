@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InternsAssessmentTracker.API.Logging;
 using InternsAssessmentTracker.Models.Models;
 using InternsAssessmentTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -14,10 +15,13 @@ namespace InternsAssessmentTracker.API.Controllers
     public class RatingController : ControllerBase
     {
         private readonly IRatingService ratingService;
+        private ILog logger;
 
-        public RatingController(IRatingService ratingService)
+
+        public RatingController(IRatingService ratingService, ILog logger)
         {
             this.ratingService = ratingService;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -38,8 +42,9 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
                 throw;
             }
         }
@@ -52,8 +57,10 @@ namespace InternsAssessmentTracker.API.Controllers
             {
                 return Ok(ratingService.GetInternRatings(request));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }
@@ -66,8 +73,10 @@ namespace InternsAssessmentTracker.API.Controllers
             {
                 return Ok(ratingService.GetRatings());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                this.logger.Error(ex);
+
                 throw;
             }
         }

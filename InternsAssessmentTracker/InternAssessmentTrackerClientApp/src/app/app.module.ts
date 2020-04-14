@@ -25,7 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { HomeComponent } from './pages/home/home.component';
-import { DataComponent } from './pages/data/data.component';
 import { SidebarService } from './shared/sidebar.service';
 import { InternService } from './services/intern.service';
 import { InternComponent } from './intern/intern.component';
@@ -38,7 +37,7 @@ import { AssignprojectComponent } from './intern/assignproject/assignproject.com
 import { RatingService } from './services/rating.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DataComponent, InternComponent, InternProjectComponent, InternratingComponent, AssignprojectComponent],
+  declarations: [AppComponent, HomeComponent, InternComponent, InternProjectComponent, InternratingComponent, AssignprojectComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

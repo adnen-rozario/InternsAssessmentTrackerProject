@@ -11,35 +11,27 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
 {
     public class InternService : IInternService
     {
-        private readonly IInternRepository _internRepository;
+        private readonly IInternRepository internRepository;
 
         public InternService(IInternRepository internRepository)
         {
-            _internRepository = internRepository;
+            this.internRepository = internRepository;
+
         }
 
         public bool AddIntern(InternRequest requestIntern)
         {
-            try
-            {
-                _internRepository.Create(new Interns() { Name = requestIntern.Name, EmailId = requestIntern.EmailId, PhoneNo = requestIntern.PhoneNo, CreatedDate = DateTime.Now });
+            
+                this.internRepository.Create(new Interns() { Name = requestIntern.Name, EmailId = requestIntern.EmailId, PhoneNo = requestIntern.PhoneNo, CreatedDate = DateTime.Now });
 
-                _internRepository.Save();
+                this.internRepository.Save();
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                return true;           
         }
 
         public IEnumerable<InternResponse> GetIntern()
         {
-            try
-            {
-
-                return _internRepository.FindAll()
+                return this.internRepository.FindAll()
                                               .Select(x
                                               => new InternResponse()
                                               {
@@ -49,100 +41,70 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
                                                   CreatedDate = x.CreatedDate,
                                                   InternId = x.InternsId
                                               });
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            
         }
 
         public InternResponse GetInternById(int id)
         {
-            try
-            {
-                if (id > 0)
-                {
-                    return _internRepository.FindByCondition(x => x.InternsId == id)
-                        .Select(y =>
-                        new InternResponse()
-                        {
-                            Name = y.Name,
-                            EmailId = y.EmailId,
-                            PhoneNo = y.PhoneNo
-                        }).FirstOrDefault();
-                }
 
-                return new InternResponse();
-            }
-            catch (Exception ex)
+            if (id > 0)
             {
-                throw ex;
+                return this.internRepository.FindByCondition(x => x.InternsId == id)
+                    .Select(y =>
+                    new InternResponse()
+                    {
+                        Name = y.Name,
+                        EmailId = y.EmailId,
+                        PhoneNo = y.PhoneNo
+                    }).FirstOrDefault();
             }
+
+            return new InternResponse();
+
         }
 
         public object GetDashboardValues()
         {
-            try
-            {
+            var getDashboardValues = this.internRepository.FindAll().GroupBy(x => x.OverallRating).Select(z => new { ratingId = z.FirstOrDefault().OverallRating, internCount = z.Count() });
 
-                var getDashboardValues = _internRepository.FindAll().GroupBy(x => x.OverallRating).Select(z => new { ratingId = z.FirstOrDefault().OverallRating, internCount = z.Count() });
-
-                return getDashboardValues;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return getDashboardValues;
         }
 
         public bool UpdateIntern(int id, InternRequest internRequest)
         {
-            try
+            if (id == internRequest.Id)
             {
-                if (id == internRequest.Id)
+                Interns intern = new Interns()
                 {
-                    Interns intern = new Interns()
-                    {
-                        InternsId = id,
-                        Name = internRequest.Name,
-                        EmailId = internRequest.EmailId,
-                        PhoneNo = internRequest.PhoneNo,
-                        CreatedDate = internRequest.CreatedDate
-                    };
+                    InternsId = id,
+                    Name = internRequest.Name,
+                    EmailId = internRequest.EmailId,
+                    PhoneNo = internRequest.PhoneNo,
+                    CreatedDate = internRequest.CreatedDate
+                };
 
-                    _internRepository.Update(intern);
-                    _internRepository.Save();
+                this.internRepository.Update(intern);
+                this.internRepository.Save();
 
-                    return true;
-                }
-
-                return false;
+                return true;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            return false;
         }
 
         public bool DeleteIntern(int id)
         {
-            try
-            {
-                if (id > 0)
-                {
-                    _internRepository.Delete(id);
-                    _internRepository.Save();
 
-                    return true;
-                }
-
-                return false;
-            }
-            catch (Exception ex)
+            if (id > 0)
             {
-                throw ex;
+                this.internRepository.Delete(id);
+                this.internRepository.Save();
+
+                return true;
             }
+
+            return false;
+
         }
     }
 }

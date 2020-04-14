@@ -33,8 +33,6 @@ namespace InternsAssessmentTracker.Services.Services
 
         public bool AddProject(ProjectRequest requestProject)
         {
-            try
-            {
                 if (!string.IsNullOrEmpty(requestProject.ProjectName))
                 {
                     Projects project = new Projects()
@@ -61,36 +59,22 @@ namespace InternsAssessmentTracker.Services.Services
                     }
                 }
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                return false;            
         }
 
         public IEnumerable<KeyValueResponse> GetTechnologies()
         {
-            try
-            {
                 return this.technologyRepository.FindAll()
                     .Select(
                     x => new KeyValueResponse()
                     {
                         Key = x.TechnologiesId,
                         Value = x.Name
-                    });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                    });            
         }
 
         public IEnumerable<ProjectResponse> GetProjects()
         {
-            try
-            {
                 return this.projectRepository.FindByCondition(x => x.ProjectsId != 0, "ProjectTechnologiesRelation.Technologies")
                 .Select(x => new ProjectResponse()
                 {
@@ -99,52 +83,32 @@ namespace InternsAssessmentTracker.Services.Services
                     ProjectId = x.ProjectsId,
                     CreatedDate = x.CreatedDate,
                     ProjectTechnologies = string.Join(",", x.ProjectTechnologiesRelation.Select(y => y.Technologies.Name))
-                });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                });            
         }
 
         public IEnumerable<KeyValueResponse> GetProjectNames()
         {
-            try
-            {
                 return this.projectRepository.FindByCondition(x => x.ProjectsId != 0, "ProjectTechnologiesRelation.Technologies")
                 .Select(x => new KeyValueResponse()
                 {
                     Key = x.ProjectsId,
                     Value = x.Name
-                });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                });            
         }
 
         public IEnumerable<KeyValueResponse> GetMentorNames()
         {
-            try
-            {
                 return this.mentorRepository.FindByCondition(x => x.MentorId != 0)
                 .Select(x => new KeyValueResponse()
                 {
                     Key = x.MentorId,
                     Value = x.Name
-                });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                });            
         }
 
         public bool AssignProjectToIntern(AssignProjectRequest request)
         {
-            try
-            {
+            
                 if (request.InternId != 0 && request.ProjId != 0 && request.MentorId != 0)
                 {
                     this.projectInternRepository.Create(new ProjectInternRelation() { InternsId = request.InternId, ProjectsId = request.ProjId });
@@ -157,12 +121,7 @@ namespace InternsAssessmentTracker.Services.Services
                 else
                 {
                     return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                }            
         }
 
     }
