@@ -27,7 +27,7 @@ namespace InternsAssessmentTracker.API
     {
         public Startup(IConfiguration configuration)
         {
-            LogManager.LoadConfiguration(System.String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+            LogManager.LoadConfiguration(System.String.Concat(Directory.GetCurrentDirectory(), configuration.GetValue<string>("NlogConfigFilePath")));
             Configuration = configuration;
         }
 
@@ -38,9 +38,8 @@ namespace InternsAssessmentTracker.API
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    //builder => builder.WithOrigins("http://localhost:4200")
-                    builder => builder.WithOrigins("*")
+                options.AddPolicy("CorsPolicy",                    
+                    builder => builder.WithOrigins(Configuration.GetValue<string>("CorsAllowedDomain"))
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     );
@@ -49,7 +48,7 @@ namespace InternsAssessmentTracker.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ILog, LogNLog>();
 
-            services.AddDbContext<IATrackerDbContext>(option => option.UseSqlServer(@"Data Source=AROZARIO01;User ID=sa;Password=Ady6ady@@@;Initial Catalog=InternAssessmentTrackerDb;"));
+            services.AddDbContext<IATrackerDbContext>(option => option.UseSqlServer(Configuration.GetValue<string>("DBConnectionString")));
                   
             services.AddTransient<IInternRepository, InternRepository>();
             services.AddTransient<IProjectRepository, ProjectRepository>();
@@ -78,10 +77,6 @@ namespace InternsAssessmentTracker.API
             }
 
             app.UseMvc();
-
-            //app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod());
-
-            //builder.WithOrigins("http://localhost:4200/"));
 
         }
     }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { KeyValue } from '../models/keyvalueModel';
-import { ProjectService } from '../services/project.service';
+import { KeyValue } from '../../models/keyvalueModel';
+import { ProjectService } from '../../services/project.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Project } from '../models/projectModel';
+import { Project } from '../../models/projectModel';
+import { NotificationService,NotifcationType,Position } from 'src/app/shared/notification/notification.service';
 
 @Component({
   selector: 'app-internproject',
@@ -20,10 +21,9 @@ export class InternProjectComponent implements OnInit {
   projs:Project[];
 
 
-  constructor(private projectService:ProjectService,private fb: FormBuilder) { }
+  constructor(private projectService:ProjectService,private fb: FormBuilder,private notificationservice:NotificationService) { }
 
   ngOnInit(): void {
-    
     this.reactiveForm();
     this.getProjects();
   }
@@ -61,6 +61,13 @@ export class InternProjectComponent implements OnInit {
       this.projectService.addProject(projectDetails).subscribe((data) =>
        {
       console.log('data returned '+data);
+
+      if(data)
+      {
+        this.notificationservice.show("","Project added suuccessfully",NotifcationType.success,Position.bottomRight);
+       this.isShow = !this.isShow;
+        this.ngOnInit();
+      }
       },
       (err: HttpErrorResponse) => {
         console.log("error");

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Intern } from '../models/internModel';
-import { InternService } from '../services/intern.service';
+import { Intern } from '../../models/internModel';
+import { InternService } from '../../services/intern.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 

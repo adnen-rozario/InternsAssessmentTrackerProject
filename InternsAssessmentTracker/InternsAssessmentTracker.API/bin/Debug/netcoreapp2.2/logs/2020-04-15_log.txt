@@ -1,0 +1,9 @@
+2020-04-15 02:15:46.8679 ERROR System.ArgumentNullException: Value cannot be null.
+Parameter name: entity
+   at Microsoft.EntityFrameworkCore.Utilities.Check.NotNull[T](T value, String parameterName)
+   at Microsoft.EntityFrameworkCore.DbContext.Remove[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Remove(TEntity entity)
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(T entity) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 67
+   at InternsAssessment.Entities.Repository.Repository`1.Delete(Object id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Entities\Repository\Repository.cs:line 57
+   at InternsAssessmentTracker.Services.BusinessObjects.InternService.DeleteIntern(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.Services\Services\InternService.cs:line 100
+   at InternsAssessmentTracker.API.Controllers.InternController.Delete(Int32 id) in D:\InternTrackerAssignment\InternsAssessmentTracker\InternsAssessmentTracker.API\Controllers\InternController.cs:line 120

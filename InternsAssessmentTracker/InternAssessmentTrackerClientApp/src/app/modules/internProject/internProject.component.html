@@ -6,7 +6,7 @@
       
       <mat-form-field class="form-element">
         <input matInput placeholder="Name" formControlName="projectName">
-        <mat-error *ngIf="!addProjectForm.controls['projectName'].valid || addProjectForm.controls['projectName'].touched">
+        <mat-error *ngIf="!addProjectForm.controls['projectName'].valid">
             <strong>Project Name</strong> is required
          </mat-error>
       </mat-form-field>
