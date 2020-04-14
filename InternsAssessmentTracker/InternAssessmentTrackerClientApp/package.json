@@ -26,7 +26,8 @@
     "microsoft-adal-angular6": "^1.3.0",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "adal-angular4": "^4.0.12"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",

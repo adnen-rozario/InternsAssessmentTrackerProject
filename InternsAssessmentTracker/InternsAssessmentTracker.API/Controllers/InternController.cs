@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InternsAssessmentTracker.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class InternController : ControllerBase
     {
@@ -22,6 +21,7 @@ namespace InternsAssessmentTracker.API.Controllers
 
         // GET: api/Intern
         [HttpGet]
+        [Route("api/Intern")]
         public IActionResult Get()
         {
             try
@@ -36,6 +36,7 @@ namespace InternsAssessmentTracker.API.Controllers
 
         // GET: api/Intern/5
         [HttpGet("{id}", Name = "Get")]
+        [Route("api/Intern")]
         public IActionResult Get(int id)
         {
             try
@@ -50,6 +51,7 @@ namespace InternsAssessmentTracker.API.Controllers
 
         // POST: api/Intern
         [HttpPost]
+        [Route("api/Intern")]
         public IActionResult Post(InternRequest requestIntern)
         {
             try
@@ -73,6 +75,7 @@ namespace InternsAssessmentTracker.API.Controllers
 
         // PUT: api/Intern/5
         [HttpPut("{id}")]
+        [Route("api/Intern")]
         public IActionResult Put(int id, [FromBody] InternRequest requestIntern)
         {
             try
@@ -96,6 +99,8 @@ namespace InternsAssessmentTracker.API.Controllers
 
         // DELETE: api/Intern/5
         [HttpDelete("{id}")]
+        [Route("api/Intern")]
+
         public IActionResult Delete(int id)
         {
             try
@@ -111,6 +116,20 @@ namespace InternsAssessmentTracker.API.Controllers
                     return BadRequest();
                 }
 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/dashboard")]
+        public IActionResult GetDashboardValues()
+        {
+            try
+            {
+                return Ok(internService.GetDashboardValues());
             }
             catch (Exception)
             {

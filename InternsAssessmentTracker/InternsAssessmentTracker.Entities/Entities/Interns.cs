@@ -12,6 +12,8 @@ namespace InternsAssessment.Entities.Entities
         public string EmailId { get; set; }
         public string PhoneNo { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        public int OverallRating { get; set; }
         public ICollection<InternRating> InternRating { get; set; }
         public ICollection<ProjectInternRelation> ProjectInternRelation { get; set; }
 

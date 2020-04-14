@@ -5,6 +5,13 @@
 export const environment = {
   production: false,
   apiUrl:'http://localhost:59061/api/',
+  authConfig: {
+    tenant: 'neudesic.com',
+    clientId: '63d42360-8d4e-4d72-b23c-2881ff3e4c80',
+    endpoints: {
+      'https://graph.microsoft.com': '00000003-0000-0000-c000-000000000000'
+    }
+  }
   
 };
 

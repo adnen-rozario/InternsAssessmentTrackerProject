@@ -1,4 +1,5 @@
 ﻿using InternsAssessment.Entities.Entities;
+using InternsAssessmentTracker.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,7 @@ namespace InternsAssessment.Entities.DataContext
         public DbSet<ProjectTechnologiesRelation> ProjectTechnologiesRelation { get; set; }
         public DbSet<InternRating> InternRating { get; set; }
 
+        public DbSet<Mentor> Mentor { get; set; }
+        public DbSet<MentorProjectRelation> MentorProjectRelation { get; set; }
     }
 }

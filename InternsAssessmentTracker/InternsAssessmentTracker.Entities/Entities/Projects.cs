@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternsAssessmentTracker.Entities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,5 +14,7 @@ namespace InternsAssessment.Entities.Entities
         public ICollection<ProjectInternRelation> ProjectInternRelation { get; set; }
         public ICollection<ProjectTechnologiesRelation> ProjectTechnologiesRelation { get; set; }
 
+        public ICollection<MentorProjectRelation> MentorProjectRelation { get; set; }
+        
     }
 }

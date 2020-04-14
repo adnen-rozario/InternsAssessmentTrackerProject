@@ -1,4 +1,5 @@
 ﻿using InternsAssessment.Entities.Entities;
+using InternsAssessmentTracker.Entities.Entities;
 using InternsAssessmentTracker.Entities.Repository;
 using InternsAssessmentTracker.Entities.Repository.Interfaces;
 using InternsAssessmentTracker.Models.Models;
@@ -16,14 +17,18 @@ namespace InternsAssessmentTracker.Services.Services
         private readonly IProjectTechnologiesRepository projectTechnologiesRepository;
         private readonly ITechnologyRepository technologyRepository;
         private readonly IProjectInternRepository projectInternRepository;
+        private readonly IMentorProjectRepository mentorProjectRepository;
+        private readonly IMentorRepository mentorRepository;
 
 
-        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository, ITechnologyRepository technologyRepository, IProjectInternRepository projectInternRepository)
+        public ProjectService(IProjectRepository projectRepository, IProjectTechnologiesRepository projectTechnologiesRepository, ITechnologyRepository technologyRepository, IProjectInternRepository projectInternRepository, IMentorProjectRepository mentorProjectRepository, IMentorRepository mentorRepository)
         {
             this.projectRepository = projectRepository;
             this.projectTechnologiesRepository = projectTechnologiesRepository;
             this.technologyRepository = technologyRepository;
             this.projectInternRepository = projectInternRepository;
+            this.mentorProjectRepository = mentorProjectRepository;
+            this.mentorRepository = mentorRepository;
         }
 
         public bool AddProject(ProjectRequest requestProject)
@@ -119,14 +124,34 @@ namespace InternsAssessmentTracker.Services.Services
             }
         }
 
+        public IEnumerable<KeyValueResponse> GetMentorNames()
+        {
+            try
+            {
+                return this.mentorRepository.FindByCondition(x => x.MentorId != 0)
+                .Select(x => new KeyValueResponse()
+                {
+                    Key = x.MentorId,
+                    Value = x.Name
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool AssignProjectToIntern(AssignProjectRequest request)
         {
             try
             {
-                if (request.InternId != 0 && request.ProjId != 0)
+                if (request.InternId != 0 && request.ProjId != 0 && request.MentorId != 0)
                 {
                     this.projectInternRepository.Create(new ProjectInternRelation() { InternsId = request.InternId, ProjectsId = request.ProjId });
                     this.projectInternRepository.Save();
+
+                    this.mentorProjectRepository.Create(new MentorProjectRelation() { MentorId = request.MentorId,ProjectsId=request.ProjId});
+                    this.mentorProjectRepository.Save();
                     return true;
                 }
                 else

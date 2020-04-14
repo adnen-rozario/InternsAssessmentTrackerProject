@@ -61,6 +61,15 @@ export class ProjectService
 
     }
 
+    getMentorNames(): Observable<KeyValue[]>
+    {        
+        return this.http.get<KeyValue[]>(this.projectServiceUrl+'mentors')        
+        .pipe(  
+            catchError(this.handleError)  
+          ); 
+
+    }
+
     assignProject(assignDetails:AssignProject): Observable<boolean>
     {        
       const headers = new HttpHeaders({ 'Content-Type': 'application/json'}); 

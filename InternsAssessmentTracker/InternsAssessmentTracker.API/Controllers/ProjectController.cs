@@ -116,6 +116,30 @@ namespace InternsAssessmentTracker.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/Projectmentors")]
+
+        public IActionResult GetMentorNames()
+        {
+            try
+            {
+                var response = projectService.GetMentorNames();
+
+                if (response.Any())
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         [HttpPost]
         [Route("api/Projectassign")]
 

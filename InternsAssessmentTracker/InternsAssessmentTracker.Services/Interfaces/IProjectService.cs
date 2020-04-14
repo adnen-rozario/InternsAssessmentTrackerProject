@@ -14,6 +14,7 @@ namespace InternsAssessmentTracker.Services.Interfaces
         IEnumerable<ProjectResponse> GetProjects();
 
         IEnumerable<KeyValueResponse> GetProjectNames();
+        IEnumerable<KeyValueResponse> GetMentorNames();
         bool AssignProjectToIntern(AssignProjectRequest request);
     }
 }

@@ -81,6 +81,21 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
             }
         }
 
+        public object GetDashboardValues()
+        {
+            try
+            {
+
+                var getDashboardValues = _internRepository.FindAll().GroupBy(x => x.OverallRating).Select(z => new { ratingId = z.FirstOrDefault().OverallRating, internCount = z.Count() });
+
+                return getDashboardValues;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool UpdateIntern(int id, InternRequest internRequest)
         {
             try

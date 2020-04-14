@@ -1,4 +1,5 @@
 ﻿using InternsAssessment.Entities.Entities;
+using InternsAssessmentTracker.Entities.Repository;
 using InternsAssessmentTracker.Entities.Repository.Interfaces;
 using InternsAssessmentTracker.Models.Models;
 using InternsAssessmentTracker.Services.Interfaces;
@@ -14,13 +15,15 @@ namespace InternsAssessmentTracker.Services.Services
         private readonly IInternRatingRepository internRatingRepository;
         private readonly IRatingMasterRepository ratingMasterRepository;
         private readonly IProjectInternRepository projectInternRepository;
+        private readonly IInternRepository internRepository;
 
 
-        public RatingService(IInternRatingRepository internRatingRepository, IRatingMasterRepository ratingMasterRepository, IProjectInternRepository projectInternRepository)
+        public RatingService(IInternRatingRepository internRatingRepository, IRatingMasterRepository ratingMasterRepository, IProjectInternRepository projectInternRepository, IInternRepository internRepository)
         {
             this.internRatingRepository = internRatingRepository;
             this.ratingMasterRepository = ratingMasterRepository;
             this.projectInternRepository = projectInternRepository;
+            this.internRepository = internRepository;
         }
 
         public bool AddInternRating(InternRatingRequest request)
@@ -29,13 +32,20 @@ namespace InternsAssessmentTracker.Services.Services
             {
                 if (request.InternId != 0 && request.Rating.Any())
                 {
-                    var avgInternRating = request.Rating.Average(x => x.RatingId);
+                    var avgInternRating = (int)request.Rating.Average(x => x.RatingId);
                     foreach (var rate in request.Rating)
                     {
                         this.internRatingRepository.Create(new InternRating() { InternsId = request.InternId, RatingMasterId = rate.RatingId, TechnologiesId = rate.TechId, CreatedDate = DateTime.Now });
+
                     }
 
                     this.internRatingRepository.Save();
+
+                    var updateItem = this.internRepository.FindByCondition(x => x.InternsId == request.InternId).FirstOrDefault();
+                    updateItem.OverallRating = avgInternRating;
+                    this.internRepository.Update(updateItem);
+
+                    this.internRepository.Save();
 
                     return true;
                 }

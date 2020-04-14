@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdalService, AdalGuard } from 'adal-angular4';
+import { AuthenticationGuard } from './Guards/authentication.guard';
+
 // import { MatBadgeModule } from '@angular/material/badge';
 // import { MatButtonModule } from '@angular/material/button';
 // import { MatChipsModule } from '@angular/material/chips';
@@ -62,7 +65,7 @@ import { RatingService } from './services/rating.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SidebarService,InternService,ProjectService,RatingService],
+  providers: [SidebarService,InternService,ProjectService,RatingService,AdalGuard,AdalService,AuthenticationGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

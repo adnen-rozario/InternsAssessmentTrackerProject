@@ -4,14 +4,16 @@ using InternsAssessment.Entities.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InternsAssessmentTracker.Entities.Migrations
 {
     [DbContext(typeof(IATrackerDbContext))]
-    partial class IATrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200414060530_addednewtables")]
+    partial class addednewtables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

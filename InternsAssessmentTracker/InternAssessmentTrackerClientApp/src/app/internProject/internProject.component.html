@@ -21,7 +21,7 @@
   
 
 
-        <mat-form-field ng-if="technologiesList.length > 0">
+        <mat-form-field *ngif="technologiesList.length > 0">
             <mat-select placeholder="Technologies" formControlName="techId" [(value)]="selectedTechnologies" multiple>
               <mat-option *ngFor="let technology of technologiesList" [value]="technology.key">{{technology.value}}</mat-option>
             </mat-select>

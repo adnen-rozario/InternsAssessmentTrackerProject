@@ -16,6 +16,8 @@ export class AssignprojectComponent implements OnInit {
   assignProjDetails:AssignProject;
   internId:number;
   projectsList:KeyValue[];
+  mentorList:KeyValue[];
+
   constructor(private fb:FormBuilder,private route: ActivatedRoute,private projectservice:ProjectService) {
     this.route.params.subscribe( params =>{ 
      
@@ -28,12 +30,15 @@ export class AssignprojectComponent implements OnInit {
     
 
      this.getProjects();
+     this.getMentors();
   }
 
   reactiveForm() {
    
     this.assignProjectForm = this.fb.group({
-      projId: ['', [Validators.required]]
+      projId: ['', [Validators.required]],
+      mentorId: ['', [Validators.required]]
+
      
     })
   }
@@ -68,6 +73,19 @@ export class AssignprojectComponent implements OnInit {
     this.projectservice.getProjectNames().subscribe((data) =>
     {
       this.projectsList=data;
+   console.log('data returned '+data);
+   },
+   (err: HttpErrorResponse) => {
+     console.log("error");
+   console.log (err.message);
+   }
+   );
+  }
+
+  getMentors(){
+    this.projectservice.getMentorNames().subscribe((data) =>
+    {
+      this.mentorList=data;
    console.log('data returned '+data);
    },
    (err: HttpErrorResponse) => {

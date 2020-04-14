@@ -9,5 +9,6 @@ namespace InternsAssessmentTracker.Models.Models
         public int InternId { get; set; }
 
         public int ProjId { get; set; }
+        public int MentorId { get; set; }
     }
 }
