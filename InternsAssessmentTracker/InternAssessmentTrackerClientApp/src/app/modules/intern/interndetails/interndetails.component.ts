@@ -25,6 +25,7 @@ export class InterndetailsComponent implements OnInit {
   interndetailsForm:FormGroup;
   email:string;
   phoneno:string;
+  mentorname:string;
 
 
   constructor(private ratingservice:RatingService,private route: ActivatedRoute) {
@@ -66,6 +67,7 @@ export class InterndetailsComponent implements OnInit {
          this.projectDescription=data[0].projectDescription;
          this.email=data[0].email;
          this.phoneno=data[0].phoneNo;
+         this.mentorname=data[0].mentorName;
  
     
  

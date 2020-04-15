@@ -19,6 +19,8 @@ namespace InternsAssessmentTracker.Models.Models
 
         public string TechnologyName { get; set; }
 
+        public string MentorName { get; set; }
+
         public List<string> TechnologyNameList { get; set; }
         public string TechnologyRating { get; set; }
 

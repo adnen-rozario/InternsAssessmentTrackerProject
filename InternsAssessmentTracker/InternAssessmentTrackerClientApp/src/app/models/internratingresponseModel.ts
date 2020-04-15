@@ -11,4 +11,5 @@ export interface InternRatingResponse {
   ratings:number[];
   email:string;
   phoneNo:string;
+  mentorName:string;
 }

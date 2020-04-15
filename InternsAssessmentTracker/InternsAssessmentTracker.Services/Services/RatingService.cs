@@ -72,7 +72,7 @@ namespace InternsAssessmentTracker.Services.Services
                 //         TechnologyRating = x.Rating?.Rate
                 //     });
 
-                var response = this.projectInternRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Interns.InternRating,Interns.InternRating.Rating,Projects,Projects.ProjectTechnologiesRelation,Projects.ProjectTechnologiesRelation.Technologies")
+                var response = this.projectInternRepository.FindByCondition(x => x.InternsId == request.InternId, "Interns,Interns.InternRating,Interns.InternRating.Rating,Projects,Projects.ProjectTechnologiesRelation,Projects.ProjectTechnologiesRelation.Technologies,Projects.MentorProjectRelation,Projects.MentorProjectRelation.Mentor")
                     .ToList()
                     .Select(
                     x => new InternRatingResponse()
@@ -85,7 +85,9 @@ namespace InternsAssessmentTracker.Services.Services
                         TechnologyNameList = x.Projects.ProjectTechnologiesRelation.Select(y => y.Technologies.Name).ToList(),
                         Ratings = x.Interns.InternRating.Select(y => y.Rating.Rate).ToList(),
                         Email = x.Interns.EmailId,
-                        PhoneNo = x.Interns.PhoneNo
+                        PhoneNo = x.Interns.PhoneNo,
+                        MentorName=x.Projects.MentorProjectRelation?.FirstOrDefault().Mentor.Name
+
                     });
 
                 if(!response.Any())
