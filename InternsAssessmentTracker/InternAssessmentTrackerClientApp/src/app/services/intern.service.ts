@@ -37,6 +37,17 @@ export class InternService
         
     }
 
+    getInternDashboard(): Observable<Intern[]>
+    {
+        
+        return this.http.get<Intern[]>(environment.apiUrl+"interndashboard")  
+        .pipe(  
+            catchError(this.handleError)  
+          ); 
+
+        
+    }
+
 
     private handleError(err) 
 {  

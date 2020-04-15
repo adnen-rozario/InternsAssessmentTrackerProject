@@ -150,5 +150,21 @@ namespace InternsAssessmentTracker.API.Controllers
                 throw;
             }
         }
+
+        [HttpGet]
+        [Route("api/interndashboard")]
+        public IActionResult GetInternDashboard()
+        {
+            try
+            {
+                return Ok(internService.GetAllInternDashboard());
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex);
+
+                throw;
+            }
+        }
     }
 }

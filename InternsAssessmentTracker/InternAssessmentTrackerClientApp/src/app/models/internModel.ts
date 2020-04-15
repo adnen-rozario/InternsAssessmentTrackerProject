@@ -3,5 +3,8 @@ export interface Intern {
   name: string;
   emailId:string;
   phoneNo:string;
-  createdDate:Date
+  createdDate:Date;
+  projectName:string;
+  projectDescription:string;
+  ratingValues:string;
 }

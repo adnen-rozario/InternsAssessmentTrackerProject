@@ -36,7 +36,7 @@
 
 <div class="container">
   <div class="button-wrapper">
-    <button mat-flat-button class="btn btn-success" (click) = toggleDisplay($event) [hidden] ="isShow">Add Intern</button>
+    <button [routerLink]="['/']" class="btn btn-danger" [hidden] ="isShow">Back</button><button mat-flat-button class="btn btn-success ml-5" (click) = toggleDisplay($event) [hidden] ="isShow">Add Intern</button>
   </div>
             
   <table class="table mt-5" [hidden] ="isShow">
@@ -46,7 +46,7 @@
         <th>Email</th>
         <th>Phone No</th>
         <th>Created Date</th>
-        <th>Actions</th>
+        <th class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>

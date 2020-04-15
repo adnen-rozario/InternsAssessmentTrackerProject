@@ -17,5 +17,7 @@ namespace InternsAssessmentTracker.Services.Interfaces
         bool DeleteIntern(int id);
 
         object GetDashboardValues();
+
+        IEnumerable<InternResponse> GetAllInternDashboard();
     }
 }

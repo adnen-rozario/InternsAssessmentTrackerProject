@@ -21,27 +21,27 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
 
         public bool AddIntern(InternRequest requestIntern)
         {
-            
-                this.internRepository.Create(new Interns() { Name = requestIntern.Name, EmailId = requestIntern.EmailId, PhoneNo = requestIntern.PhoneNo, CreatedDate = DateTime.Now });
 
-                this.internRepository.Save();
+            this.internRepository.Create(new Interns() { Name = requestIntern.Name, EmailId = requestIntern.EmailId, PhoneNo = requestIntern.PhoneNo, CreatedDate = DateTime.Now });
 
-                return true;           
+            this.internRepository.Save();
+
+            return true;
         }
 
         public IEnumerable<InternResponse> GetIntern()
         {
-                return this.internRepository.FindAll()
-                                              .Select(x
-                                              => new InternResponse()
-                                              {
-                                                  Name = x.Name,
-                                                  EmailId = x.EmailId,
-                                                  PhoneNo = x.PhoneNo,
-                                                  CreatedDate = x.CreatedDate,
-                                                  InternId = x.InternsId
-                                              });
-            
+            return this.internRepository.FindAll()
+                                          .Select(x
+                                          => new InternResponse()
+                                          {
+                                              Name = x.Name,
+                                              EmailId = x.EmailId,
+                                              PhoneNo = x.PhoneNo,
+                                              CreatedDate = x.CreatedDate,
+                                              InternId = x.InternsId
+                                          });
+
         }
 
         public InternResponse GetInternById(int id)
@@ -104,6 +104,30 @@ namespace InternsAssessmentTracker.Services.BusinessObjects
             }
 
             return false;
+
+        }
+
+        public IEnumerable<InternResponse> GetAllInternDashboard()
+        {
+            var response = this.internRepository.FindByCondition(x => x.InternsId != 0, "ProjectInternRelation.Projects.ProjectTechnologiesRelation,InternRating,InternRating.Rating")
+                                          .Select(x
+                                          => new InternResponse()
+                                          {
+                                              Name = x.Name,
+                                              EmailId = x.EmailId,
+                                              PhoneNo = x.PhoneNo,
+                                              CreatedDate = x.CreatedDate,
+                                              InternId = x.InternsId,
+                                              ProjectName = x.ProjectInternRelation.FirstOrDefault().Projects.Name,
+                                              ProjectDescription = x.ProjectInternRelation.FirstOrDefault().Projects.Description,
+                                              //Technologies = string.Join(",", x.ProjectInternRelation.FirstOrDefault().Projects.ProjectTechnologiesRelation.Select(y => y.Technologies.Name).ToList()),
+                                              //Technologies = string.Join(",", x.ProjectInternRelation.Select(y => string.Join(",", y.Projects.ProjectTechnologiesRelation.Select(k => k.Technologies.Name).ToList()))),
+                                              RatingValues = string.Join(",", x.InternRating.Select(y => y.Rating.Rate).ToList())
+                                          });
+
+
+
+            return response;
 
         }
     }
