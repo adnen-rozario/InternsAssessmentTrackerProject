@@ -3,9 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InternRating } from 'src/app/models/internratingModel';
 import { RatingService } from 'src/app/services/rating.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InternRatingResponse } from 'src/app/models/internratingresponseModel';
 import { TechRating } from 'src/app/models/techratingModel';
+import { NotificationService,NotifcationType,Position } from 'src/app/shared/notification/notification.service';
 
 @Component({
   selector: 'app-internrating',
@@ -27,7 +28,7 @@ export class InternratingComponent implements OnInit {
   show=false;
   
   internId:number;
-  constructor(private fb:FormBuilder,private ratingservice:RatingService,private route: ActivatedRoute) {
+  constructor(private fb:FormBuilder,private ratingservice:RatingService,private route: ActivatedRoute,private notificationservice:NotificationService,private router: Router) {
     this.route.params.subscribe( params =>{ 
      
       this.internId= params["id"];
@@ -71,7 +72,8 @@ if(this.assignRatingForm.valid)
 
       if(data)
       {
-        
+        this.notificationservice.show("","Rating assigned successfully",NotifcationType.success,Position.bottomRight)
+        this.router.navigateByUrl('/intern');
       }
       },
       (err: HttpErrorResponse) => {

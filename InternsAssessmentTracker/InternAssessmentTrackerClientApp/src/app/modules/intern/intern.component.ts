@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Intern } from '../../models/internModel';
 import { InternService } from '../../services/intern.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService,NotifcationType,Position } from 'src/app/shared/notification/notification.service';
 
 
 
@@ -19,7 +20,7 @@ export class InternComponent implements OnInit {
   isShow = false;
   interns: Intern[];
 
-  constructor(private fb: FormBuilder, private internService: InternService) { }
+  constructor(private fb: FormBuilder, private internService: InternService,private notificationservice:NotificationService) { }
 
   ngOnInit(): void {
     this.reactiveForm()
@@ -67,7 +68,9 @@ export class InternComponent implements OnInit {
         console.log('data returned ' + data);
 
         if (data) {
+       this.notificationservice.show("","Intern added successfully",NotifcationType.success,Position.bottomRight)
           this.isShow = !this.isShow;
+          this.ngOnInit();
         }
       },
         (err: HttpErrorResponse) => {

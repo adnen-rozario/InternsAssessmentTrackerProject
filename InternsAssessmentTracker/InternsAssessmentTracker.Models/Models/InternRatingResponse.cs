@@ -23,5 +23,10 @@ namespace InternsAssessmentTracker.Models.Models
         public string TechnologyRating { get; set; }
 
         public List<TechRating> TechRating { get; set; }
+        public List<string> Ratings { get; set; }
+
+        public string Email { get; set; }
+
+        public string PhoneNo { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		
+            <div class="col-md-12  col-lg-12">
+    	 <div class="well profile1 mt-5">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-6">
+                    <h2>{{internName}}</h2>
+                    <p class="mt-5"><strong>Email: </strong> {{email}} </p>
+                    <p><strong>Contact No: </strong> {{phoneno}} </p>
+
+                    <p><strong>Project Assigned: </strong> {{projectName}} </p>
+                    <p><strong>Project Description: </strong> {{projectDescription}} </p>
+                    
+                    <p><strong>Project Technologies: </strong>
+                    
+                    </p>
+                    <div>
+                   
+                      <ul class="list-group">
+                        <li class="list-group-item text-center" *ngFor="let tech of techs"><div>{{tech.name}} - {{tech.rating}}</div> </li>
+                      </ul>
+                      <button class="btn btn-danger mt-5" [routerLink]="['/intern']">Back</button>
+                    </div>
+                </div>             
+                
+            </div>            
+            
+    	 </div>                 
+		</div>
+    </div>
+</div>

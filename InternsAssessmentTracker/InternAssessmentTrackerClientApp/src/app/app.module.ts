@@ -21,9 +21,10 @@ import { AssignprojectComponent } from './modules/intern/assignproject/assignpro
 import { RatingService } from './services/rating.service';
 import { NotificationService } from './shared/notification/notification.service';
 import { ToastrModule } from 'ngx-toastr';
+import { InterndetailsComponent } from './modules/intern/interndetails/interndetails.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, InternComponent, InternProjectComponent, InternratingComponent, AssignprojectComponent],
+  declarations: [AppComponent, DashboardComponent, InternComponent, InternProjectComponent, InternratingComponent, AssignprojectComponent, InterndetailsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

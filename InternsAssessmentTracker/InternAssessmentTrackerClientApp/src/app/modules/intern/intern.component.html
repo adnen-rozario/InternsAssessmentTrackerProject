@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Interns</h2>
+  <h2 class="mt-5">Interns</h2>
 <form [formGroup]="addInternForm" (ngSubmit)="AddIntern()" novalidate class="form" [hidden] ="!isShow">
       
     
@@ -51,13 +51,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let intern of interns">
-        <td><a [routerLink]="['/rating',intern.internId]">{{intern.name}}</a></td>
+        <td><a [routerLink]="['/intern',intern.internId]">{{intern.name}}</a></td>
         <td>{{intern.emailId}}</td>
         <td>{{intern.phoneNo}}</td>
         <td>{{intern.createdDate | date: 'dd/MM/yyyy'}}</td>
         <td>
           <button class="btn btn-warning" [routerLink]="['/assignproject',intern.internId]">Assign Project</button>
-          <button class="btn btn-danger ml-5" [routerLink]="['/rating',intern.internId]">Rate Intern</button>
+          <button class="btn btn-danger ml-5" [routerLink]="['/rating',intern.internId]">Rate</button>
         </td>
         
 

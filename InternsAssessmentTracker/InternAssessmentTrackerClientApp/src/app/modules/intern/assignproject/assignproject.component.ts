@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AssignProject } from 'src/app/models/assignprojectModel';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { KeyValue } from 'src/app/models/keyvalueModel';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService ,NotifcationType,Position} from 'src/app/shared/notification/notification.service';
 
 @Component({
   selector: 'app-assignproject',
@@ -18,7 +19,7 @@ export class AssignprojectComponent implements OnInit {
   projectsList:KeyValue[];
   mentorList:KeyValue[];
 
-  constructor(private fb:FormBuilder,private route: ActivatedRoute,private projectservice:ProjectService) {
+  constructor(private fb:FormBuilder,private route: ActivatedRoute,private projectservice:ProjectService,private notificationservice:NotificationService,private router: Router) {
     this.route.params.subscribe( params =>{ 
      
       this.internId= params["id"];
@@ -57,7 +58,8 @@ export class AssignprojectComponent implements OnInit {
 
       if(data)
       {
-        
+        this.notificationservice.show("","Project and Mentor assigned successfully",NotifcationType.success,Position.bottomRight)
+        this.router.navigateByUrl('/intern');
       }
       },
       (err: HttpErrorResponse) => {

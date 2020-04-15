@@ -7,5 +7,8 @@ export interface InternRatingResponse {
   technologyNameList:string[];
   projectDescription:string;
   technologyName:string;
-  technologyRating:string
+  technologyRating:string;
+  ratings:number[];
+  email:string;
+  phoneNo:string;
 }

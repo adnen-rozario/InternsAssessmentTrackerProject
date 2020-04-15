@@ -6,6 +6,8 @@ import { InternProjectComponent } from './modules/internProject/internProject.co
 import { InternratingComponent } from './modules/intern/internrating/internrating.component';
 import { AssignprojectComponent } from './modules/intern/assignproject/assignproject.component';
 import { AuthenticationGuard } from './Guards/authentication.guard';
+import { InterndetailsComponent } from './modules/intern/interndetails/interndetails.component';
+
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path:'intern', canActivate:[AuthenticationGuard], component: InternComponent},
   { path:'project',canActivate:[AuthenticationGuard], component: InternProjectComponent},
   { path:'rating/:id',canActivate:[AuthenticationGuard], component: InternratingComponent},
-  { path:'assignproject/:id',canActivate:[AuthenticationGuard], component: AssignprojectComponent}
+  { path:'assignproject/:id',canActivate:[AuthenticationGuard], component: AssignprojectComponent},
+  { path:'intern/:id',canActivate:[AuthenticationGuard], component: InterndetailsComponent}
+
 ];
 
 @NgModule({
